@@ -1,0 +1,67 @@
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: #212331;
+            width: 100%;
+            color: #f1f1f1;
+            overflow-x: hidden;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAx0GLyK4xrgjLPusdICl49Uf1D-hPv0U8",
+            authDomain: "lindner-mcc.firebaseapp.com",
+            databaseURL: "https://lindner-mcc.firebaseio.com",
+            projectId: "lindner-mcc",
+            storageBucket: "lindner-mcc.appspot.com",
+            messagingSenderId: "155948911927",
+            appId: "1:155948911927:web:92d9568737ffd005"
+        };
+        
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+
+        db.collection("Main").doc("Info")
+            .onSnapshot(function(doc) {
+                const data = doc.data();
+                console.log("Current data: ", doc.data());
+
+                    if (data.status === "main") {
+                        window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Main/Classroom2.html';
+
+                    }
+        });
+
+    </script>
+    
+        <script type="text/javascript">
+        //60000 milliseconds is 1 minute
+        window.setInterval("checkForRefresh()", 60000);
+
+        function checkForRefresh() {
+            var now = new Date();
+            if (now.getHours() == 06 && now.getMinutes() == 0) {
+                location.reload();
+            }
+        }
+    </script>
+    
+</body>
+
+</html>

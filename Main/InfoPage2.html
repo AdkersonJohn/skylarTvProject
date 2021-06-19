@@ -1,0 +1,886 @@
+<html>
+
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Barlow:300&display=swap');
+
+        body {
+            background-color: #212331;
+            width: 100%;
+            color: #f1f1f1;
+            font-family: 'Barlow', sans-serif;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            margin: 0;
+        }
+
+        #wrapper {
+            margin: 10px;
+            width: auto;
+        }
+
+        .row {
+            display: -ms-flex;
+            display: -webkit-flex;
+            display: inline-flex;
+            flex-wrap: wrap;
+        }
+
+        .textbox,
+        .imagebox {
+            flex: 1;
+        }
+
+        .textbox {
+            border-radius: 5px;
+            background-color: #2d3345;
+            width: 30%;
+            min-width: 325px;
+            padding: 1% 1% 1% 1%;
+            margin-right: 2%;
+            flex-grow: 0;
+            flex-shrink: 0;
+            flex-basis: 30%;
+        }
+
+        .sysinfo {
+            text-align: left;
+            font-size: 12px;
+        }
+
+        .imagebox {
+            border-radius: 5px;
+            background-color: #2d3345;
+            width: 64%;
+            min-width: 500px;
+            margin-left 2%;
+            padding: 1% 1% 1% 1%;
+            float: right;
+            flex-grow: 0;
+            flex-shrink: 0;
+            flex-basis: 64%;
+        }
+
+        .imagebox img {
+            width: 100%;
+        }
+
+        @media only screen and (max-width: 1000px) {
+            #wrapper {
+                margin-left: 10px;
+                margin-right: 10px;
+                width: auto;
+            }
+
+            .textbox {
+                width: 34%;
+                flex-grow: 0;
+                flex-shrink: 0;
+                flex-basis: 10%;
+                margin-bottom: 20px;
+            }
+
+            .imagebox {
+                float: left;
+                width: 94%;
+                flex-grow: 0;
+                flex-shrink: 0;
+                flex-basis: 98%;
+                margin-bottom: 20px;
+                margin-left: auto;
+                margin-right: auto;
+                min-width: 97.95%;
+            }
+
+            .infocontainer {
+                float: right;
+                width: 10%;
+                flex-grow: 0;
+                flex-shrink: 0;
+                flex-basis: 10%;
+                margin-bottom: 20px;
+            }
+
+        }
+
+        .infocontainer {
+            background-color: #2d3345;
+            border-radius: 5px;
+            min-width: 332px;
+            padding: 1% 1% 1% 1%;
+
+            flex-grow: 0;
+            flex-shrink: 0;
+            flex-basis: 30%;
+            float: right;
+        }
+
+        .circles {
+            display: inline-flex;
+            text-align: center;
+            width: 100%;
+        }
+
+        .cpu,
+        .ram {
+            width: 45%;
+            padding-top: -4%;
+            padding-left: 2.5%;
+            padding-right: 2.5%;
+        }
+
+        .datacont {
+            width: 100%;
+            padding-bottom: 100%;
+            position: relative;
+        }
+
+        .datacont>div {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .livecontainer {
+            position: relative;
+            text-align: center;
+            color: white;
+            min-width: 500px;
+            width: 100%;
+        }
+
+        .roomname {
+            position: absolute;
+            top: 100px;
+            left: 30px;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .hr {
+            border-top: .5px solid #f1f1f1;
+        }
+
+        .occupied {
+            position: absolute;
+            top: 150px;
+            left: 30px;
+            font-size: 15px;
+        }
+
+        .man {
+
+            position: absolute;
+            top: 180px;
+            left: 30px;
+            width: 15px;
+        }
+
+        .timeclk {
+            position: absolute;
+            top: 470px;
+            left: 30px;
+            font-size: 30px;
+            white-space: nowrap;
+        }
+
+        .transcontainer {
+            position: relative;
+            width: 100%;
+            opacity: 1;
+        }
+
+        div.transbox {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.6);
+            width: 230px;
+            height: 514px;
+            bottom: 0px;
+            left: 455.5px;
+        }
+
+        .next {
+            position: relative;
+            top: 100px;
+            left: 20px;
+            font-size: 20px;
+            text-align: left;
+        }
+
+        .people {
+            position: absolute;
+            top: 176px;
+            left: 50px;
+            width: 15px;
+        }
+
+        .classtime {
+            position: relative;
+            top: 110px;
+            left: 20px;
+            font-size: 20px;
+            text-align: left;
+        }
+
+        .classname {
+            position: relative;
+            top: 130px;
+            left: 20px;
+            font-size: 30px;
+            text-align: left;
+            width: 90%;
+        }
+
+        .organizer {
+            position: relative;
+            top: 170px;
+            left: 20px;
+            font-size: 20px;
+            opacity: 1.0;
+            text-align: left;
+        }
+
+        .Room {
+            position: relative;
+            text-align: center;
+        }
+
+        .top-left {
+            position: absolute;
+            top: 30px;
+            left: 65px;
+            font-size: 34px;
+
+        }
+
+        .imgclass {
+            margin: 15px;
+            width: 40%;
+            height: 65px;
+            object-fit: cover;
+        }
+
+        .top-right {
+            position: absolute;
+            top: 30px;
+            right: 100px;
+            font-size: 34px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-firestore.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAx0GLyK4xrgjLPusdICl49Uf1D-hPv0U8",
+            authDomain: "lindner-mcc.firebaseapp.com",
+            databaseURL: "https://lindner-mcc.firebaseio.com",
+            projectId: "lindner-mcc",
+            storageBucket: "lindner-mcc.appspot.com",
+            messagingSenderId: "155948911927",
+            appId: "1:155948911927:web:92d9568737ffd005"
+        };
+
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAx0GLyK4xrgjLPusdICl49Uf1D-hPv0U8",
+            authDomain: "lindner-mcc.firebaseapp.com",
+            databaseURL: "https://lindner-mcc.firebaseio.com",
+            projectId: "lindner-mcc",
+            storageBucket: "lindner-mcc.appspot.com",
+            messagingSenderId: "155948911927",
+            appId: "1:155948911927:web:92d9568737ffd005"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+
+        db.collection("Main").doc("Info")
+            .onSnapshot(function(doc) {
+                const data = doc.data();
+                console.log("Current data: ", doc.data());
+
+                //Classroom 0040
+                if (data.status === "0040") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/CameraPage123.html';
+
+                }
+
+                //Classroom 0050
+                if (data.status === "0050") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/CameraPage123.html';
+
+                }
+
+                //Classroom 0060
+                if (data.status === "0060") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/CameraPage123.html';
+
+                }
+
+                //Classroom 0070
+                if (data.status === "0070") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/CameraPage123.html';
+
+                }
+
+                //Classroom 1210
+                if (data.status === "1210") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/CameraPage123.html';
+
+                }
+
+                //Classroom 1215
+                if (data.status === "1215") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/CameraPage123.html';
+
+                }
+
+                //Classroom 1220
+                if (data.status === "1220") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/CameraPage123.html';
+
+
+                }
+
+                //Classroom 1410
+                if (data.status === "1410") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/CameraPage123.html';
+
+                }
+
+                //Classroom 2110
+                if (data.status === "2110") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/CameraPage123.html';
+
+                }
+
+                //Classroom 2120
+                if (data.status === "2120") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/CameraPage123.html';
+
+                }
+
+                //Classroom 2125
+                if (data.status === "2125") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/CameraPage123.html';
+
+                }
+
+                //Classroom 2240
+                if (data.status === "2240") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/CameraPage123.html';
+
+                }
+
+                //Classroom 2245
+                if (data.status === "2245") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/CameraPage123.html';
+
+                }
+
+                //Classroom 2250
+                if (data.status === "2250") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/CameraPage123.html';
+
+                }
+
+                //Classroom 3115
+                if (data.status === "3115") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/CameraPage123.html';
+
+                }
+
+                //Classroom 3120
+                if (data.status === "3120") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/CameraPage123.html';
+
+                }
+
+                //Classroom 3125
+                if (data.status === "3125") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/CameraPage123.html';
+
+                }
+
+                //Classroom 3220
+                if (data.status === "3220") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/CameraPage123.html';
+
+                }
+
+                //Classroom 3225
+                if (data.status === "3225") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/CameraPage123.html';
+
+                }
+
+                //Classroom 3230
+                if (data.status === "3230") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/CameraPage123.html';
+
+                }
+
+                //Classroom 3240
+                if (data.status === "3240") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/CameraPage123.html';
+
+                }
+
+                //Classroom 3260
+                if (data.status === "3260") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/CameraPage123.html';
+
+                }
+
+                //Classroom 3265
+                if (data.status === "3265") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/CameraPage123.html';
+
+                }
+
+                //Classroom 4210
+                if (data.status === "4210") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/CameraPage123.html';
+
+                }
+
+                //Classroom 4225
+                if (data.status === "4225") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/CameraPage123.html';
+
+                }
+
+                //Classroom 4230
+                if (data.status === "4230") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/CameraPage123.html';
+
+                }
+
+                //Classroom 4245
+                if (data.status === "4245") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/CameraPage123.html';
+
+                }
+
+                //Classroom 4330
+                if (data.status === "4330") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/CameraPage123.html';
+
+
+                }
+            });
+
+    </script>
+
+    <script>
+        getUrl();
+
+        //Get the Url with current date + current time
+        function getUrl() {
+
+            var dateObj = new Date();
+            var month = ("0" + (dateObj.getMonth() + 1)).slice(-2);
+            var day = ("0" + dateObj.getDate()).slice(-2);
+            var year = dateObj.getFullYear();
+            var hours = dateObj.getHours();
+            var minutes = dateObj.getMinutes();
+            var seconds = dateObj.getSeconds();
+
+            var currentdate = "";
+            currentdate = year + "-" + month + "-" + day + "T" + hours + ":" + minutes + ":" + seconds;
+
+            var currenttime = "";
+            currenttime = hours + minutes + seconds
+
+            var url = "http://snowautomation.msbb.uc.edu/API/schedule/getAval.sh?" + currentdate;
+            //console.log(url);
+            loadJSON(url);
+        }
+
+        //Load the JSON from the url
+        function loadJSON(url) {
+
+            fetch(url)
+                .then(res => res.json())
+                .then((out) => {
+                    parseData(out);
+                })
+                .catch(err => {
+                    throw err
+                });
+        }
+
+        function parseData(json) {
+
+            var dateObj = new Date();
+            var month = ("0" + (dateObj.getMonth() + 1)).slice(-2);
+            var day = ("0" + dateObj.getDate()).slice(-2);
+            var year = dateObj.getFullYear();
+            var hours = dateObj.getHours();
+            var minutes = dateObj.getMinutes();
+            var seconds = dateObj.getSeconds();
+
+            var currtime = ""
+            currtime = hours + "." + minutes
+            //console.log(currtime);
+            bigarray = json.subjects.length;
+
+            for (var i = 0; i < bigarray; i++) {
+                var obj = json.subjects[i];
+                //console.log(obj);
+                var roomname = json.subjects[i].itemName;
+
+                try {
+
+                    arraylength = json.subjects[i].items.length;
+                    for (var j = 0; j < arraylength; j++) {
+                        var itm = json.subjects[i].items[j];
+                        var end = json.subjects[i].items[j].end;
+                        var start = json.subjects[i].items[j].start;
+
+                        //console.log(itm);
+                        //console.log(end);
+                        //console.log(start);
+                        //console.log(roomname);
+
+                        if (start < currtime && currtime < end) {
+                            if (roomname.includes("0040")) {
+                                document.getElementById('bgaval0040').src = "unavalwide.png";
+                            } else if (roomname.includes("0050")) {
+                                document.getElementById('bgaval0050').src = "unavalwide.png";
+                            } else if (roomname.includes("0060")) {
+                                document.getElementById('bgaval0060').src = "unavalwide.png";
+                            } else if (roomname.includes("0070")) {
+                                document.getElementById('bgaval0070').src = "unavalwide.png";
+                            } else if (roomname.includes("1210")) {
+                                document.getElementById('bgaval1210').src = "unavalwide.png";
+                            } else if (roomname.includes("1215")) {
+                                document.getElementById('bgaval1215').src = "unavalwide.png";
+                            } else if (roomname.includes("1410")) {
+                                document.getElementById('bgaval1410').src = "unavalwide.png";
+                            } else if (roomname.includes("2110")) {
+                                document.getElementById('bgaval2110').src = "unavalwide.png";
+                            } else if (roomname.includes("2120")) {
+                                document.getElementById('bgaval2120').src = "unavalwide.png";
+                            } else if (roomname.includes("2125")) {
+                                document.getElementById('bgaval2125').src = "unavalwide.png";
+                            } else if (roomname.includes("2240")) {
+                                document.getElementById('bgaval2240').src = "unavalwide.png";
+                            } else if (roomname.includes("2245")) {
+                                document.getElementById('bgaval2245').src = "unavalwide.png";
+                            } else if (roomname.includes("2250")) {
+                                document.getElementById('bgaval2250').src = "unavalwide.png";
+                            } else if (roomname.includes("3115")) {
+                                document.getElementById('bgaval3115').src = "unavalwide.png";
+                            } else if (roomname.includes("3120")) {
+                                document.getElementById('bgaval3120').src = "unavalwide.png";
+                            } else if (roomname.includes("3125")) {
+                                document.getElementById('bgaval3125').src = "unavalwide.png";
+                            } else if (roomname.includes("3220")) {
+                                document.getElementById('bgaval3220').src = "unavalwide.png";
+                            } else if (roomname.includes("3225")) {
+                                document.getElementById('bgaval3225').src = "unavalwide.png";
+                            } else if (roomname.includes("3230")) {
+                                document.getElementById('bgaval3230').src = "unavalwide.png";
+                            } else if (roomname.includes("3240")) {
+                                document.getElementById('bgaval3240').src = "unavalwide.png";
+                            } else if (roomname.includes("3260")) {
+                                document.getElementById('bgaval3260').src = "unavalwide.png";
+                            } else if (roomname.includes("3265")) {
+                                document.getElementById('bgaval3265').src = "unavalwide.png";
+                            } else if (roomname.includes("4210")) {
+                                document.getElementById('bgaval4210').src = "unavalwide.png";
+                            } else if (roomname.includes("4225")) {
+                                document.getElementById('bgaval4225').src = "unavalwide.png";
+                            } else if (roomname.includes("4230")) {
+                                document.getElementById('bgaval4230').src = "unavalwide.png";
+                            }
+                        } else {
+                            if (roomname.includes("0040")) {
+                                document.getElementById('bgaval0040').src = "avalwide.png";
+                            } else if (roomname.includes("0050")) {
+                                document.getElementById('bgaval0050').src = "avalwide.png";
+                            } else if (roomname.includes("0060")) {
+                                document.getElementById('bgaval0060').src = "avalwide.png";
+                            } else if (roomname.includes("0070")) {
+                                document.getElementById('bgaval0070').src = "avalwide.png";
+                            } else if (roomname.includes("1210")) {
+                                document.getElementById('bgaval1210').src = "avalwide.png";
+                            } else if (roomname.includes("1215")) {
+                                document.getElementById('bgaval1215').src = "avalwide.png";
+                            } else if (roomname.includes("1410")) {
+                                document.getElementById('bgaval1410').src = "avalwide.png";
+                            } else if (roomname.includes("2110")) {
+                                document.getElementById('bgaval2110').src = "avalwide.png";
+                            } else if (roomname.includes("2120")) {
+                                document.getElementById('bgaval2120').src = "avalwide.png";
+                            } else if (roomname.includes("2125")) {
+                                document.getElementById('bgaval2125').src = "avalwide.png";
+                            } else if (roomname.includes("2240")) {
+                                document.getElementById('bgaval2240').src = "avalwide.png";
+                            } else if (roomname.includes("2245")) {
+                                document.getElementById('bgaval2245').src = "avalwide.png";
+                            } else if (roomname.includes("2250")) {
+                                document.getElementById('bgaval2250').src = "avalwide.png";
+                            } else if (roomname.includes("3115")) {
+                                document.getElementById('bgaval3115').src = "avalwide.png";
+                            } else if (roomname.includes("3120")) {
+                                document.getElementById('bgaval3120').src = "avalwide.png";
+                            } else if (roomname.includes("3125")) {
+                                document.getElementById('bgaval3125').src = "avalwide.png";
+                            } else if (roomname.includes("3220")) {
+                                document.getElementById('bgaval3220').src = "avalwide.png";
+                            } else if (roomname.includes("3225")) {
+                                document.getElementById('bgaval3225').src = "avalwide.png";
+                            } else if (roomname.includes("3230")) {
+                                document.getElementById('bgaval3230').src = "avalwide.png";
+                            } else if (roomname.includes("3240")) {
+                                document.getElementById('bgaval3240').src = "avalwide.png";
+                            } else if (roomname.includes("3260")) {
+                                document.getElementById('bgaval3260').src = "avalwide.png";
+                            } else if (roomname.includes("3265")) {
+                                document.getElementById('bgaval3265').src = "avalwide.png";
+                            } else if (roomname.includes("4210")) {
+                                document.getElementById('bgaval4210').src = "avalwide.png";
+                            } else if (roomname.includes("4225")) {
+                                document.getElementById('bgaval4225').src = "avalwide.png";
+                            } else if (roomname.includes("4230")) {
+                                document.getElementById('bgaval4230').src = "avalwide.png";
+                            }
+                        }
+
+                    }
+                } catch {
+                    if (roomname.includes("0040")) {
+                        document.getElementById('bgaval0040').src = "avalwide.png";
+                    } else if (roomname.includes("0050")) {
+                        document.getElementById('bgaval0050').src = "avalwide.png";
+                    } else if (roomname.includes("0060")) {
+                        document.getElementById('bgaval0060').src = "avalwide.png";
+                    } else if (roomname.includes("0070")) {
+                        document.getElementById('bgaval0070').src = "avalwide.png";
+                    } else if (roomname.includes("1210")) {
+                        document.getElementById('bgaval1210').src = "avalwide.png";
+                    } else if (roomname.includes("1215")) {
+                        document.getElementById('bgaval1215').src = "avalwide.png";
+                    } else if (roomname.includes("1410")) {
+                        document.getElementById('bgaval1410').src = "avalwide.png";
+                    } else if (roomname.includes("2110")) {
+                        document.getElementById('bgaval2110').src = "avalwide.png";
+                    } else if (roomname.includes("2120")) {
+                        document.getElementById('bgaval2120').src = "avalwide.png";
+                    } else if (roomname.includes("2125")) {
+                        document.getElementById('bgaval2125').src = "avalwide.png";
+                    } else if (roomname.includes("2240")) {
+                        document.getElementById('bgaval2240').src = "avalwide.png";
+                    } else if (roomname.includes("2245")) {
+                        document.getElementById('bgaval2245').src = "avalwide.png";
+                    } else if (roomname.includes("2250")) {
+                        document.getElementById('bgaval2250').src = "avalwide.png";
+                    } else if (roomname.includes("3115")) {
+                        document.getElementById('bgaval3115').src = "avalwide.png";
+                    } else if (roomname.includes("3120")) {
+                        document.getElementById('bgaval3120').src = "avalwide.png";
+                    } else if (roomname.includes("3125")) {
+                        document.getElementById('bgaval3125').src = "avalwide.png";
+                    } else if (roomname.includes("3220")) {
+                        document.getElementById('bgaval3220').src = "avalwide.png";
+                    } else if (roomname.includes("3225")) {
+                        document.getElementById('bgaval3225').src = "avalwide.png";
+                    } else if (roomname.includes("3230")) {
+                        document.getElementById('bgaval3230').src = "avalwide.png";
+                    } else if (roomname.includes("3240")) {
+                        document.getElementById('bgaval3240').src = "avalwide.png";
+                    } else if (roomname.includes("3260")) {
+                        document.getElementById('bgaval3260').src = "avalwide.png";
+                    } else if (roomname.includes("3265")) {
+                        document.getElementById('bgaval3265').src = "avalwide.png";
+                    } else if (roomname.includes("4210")) {
+                        document.getElementById('bgaval4210').src = "avalwide.png";
+                    } else if (roomname.includes("4225")) {
+                        document.getElementById('bgaval4225').src = "avalwide.png";
+                    } else if (roomname.includes("4230")) {
+                        document.getElementById('bgaval4230').src = "avalwide.png";
+                    }
+                }
+
+            }
+        }
+
+    </script>
+
+    
+    <script>
+        function display_c() {
+            var refreshct = 300000; // Refresh rate in milli seconds
+            mytime = setTimeout('display_ct()', refreshct)
+        }
+
+        function display_ct() {
+            getUrl()
+            display_c();
+        }
+    </script>
+
+    
+    <script>
+        display_ct()
+    </script>
+
+    
+    <script type="text/javascript">
+        //60000 milliseconds is 1 minute
+        window.setInterval("checkForRefresh()", 60000);
+
+        function checkForRefresh() {
+            var now = new Date();
+            if (now.getHours() == 06 && now.getMinutes() == 0) {
+                location.reload();
+            }
+        }
+    </script>
+
+    <div class="livecontainer">
+        <! –– Classroom 0040 ––>
+            <! –– Classroom 0050 ––>
+                <! ––Classroom 0060 ––>
+                    <! ––Classroom 0070 ––>
+                        <! ––Classroom 1210 ––>
+                            <! ––Classroom 1215––>
+                                <! ––Classroom 1220––>
+                                    <! ––Classroom 1410––>
+                                        <! ––Classroom 2110––>
+                                            <! ––Classroom 2120––>
+                                                <! ––Classroom 2125––>
+                                                    <! ––Classroom 2240––>
+                                                        <! ––Classroom 2245––>
+                                                            <! ––Classroom 2250––>
+                                                                <! ––Classroom 3115––>
+                                                                    <! ––Classroom 3120––>
+                                                                        <! ––Classroom 3125––>
+                                                                            <! ––Classroom 3220––>
+                                                                                <! ––Classroom 3225––>
+                                                                                    <! ––Classroom 3230––>
+                                                                                        <! ––Classroom 3240––>
+                                                                                            <! ––Classroom 3260––>
+                                                                                                <! ––Classroom 3265––>
+                                                                                                    <! ––Classroom 4210––>
+                                                                                                        <! ––Classroom 4225––>
+                                                                                                            <! ––Classroom 4230––>
+                                                                                                                <! ––Classroom 4245––>
+                                                                                                                    <! ––Classroom 4330––>
+
+                                                                                                                        <div class="Room" style="float: left">
+                                                                                                                            <img id="bgaval0040" class="imgclass" src="">
+                                                                                                                            <div class="top-left">Classroom 0040</div>
+
+                                                                                                                            <img id="bgaval0050" class="imgclass" src="">
+                                                                                                                            <div class="top-right">Classroom 0050</div>
+                                                                                                                        </div>
+
+                                                                                                                        <div class="Room" style="float: left">
+                                                                                                                            <img id="bgaval0060" class="imgclass" src="">
+                                                                                                                            <div class="top-left">Classroom 0060</div>
+
+                                                                                                                            <img id="bgaval0070" class="imgclass" src="">
+                                                                                                                            <div class="top-right">Classroom 0070</div>
+                                                                                                                        </div>
+
+                                                                                                                        <div class="Room" style="float: left">
+                                                                                                                            <img id="bgaval1210" class="imgclass" src="">
+                                                                                                                            <div class="top-left">Classroom 1210</div>
+
+                                                                                                                            <img id="bgaval1215" class="imgclass" src="">
+                                                                                                                            <div class="top-right">Classroom 1215</div>
+                                                                                                                        </div>
+
+
+
+                                                                                                                        <div class="Room" style="float: left">
+                                                                                                                            <img id="bgaval2110" class="imgclass" src="">
+                                                                                                                            <div class="top-left">Classroom 2110</div>
+
+                                                                                                                            <img id="bgaval2120" class="imgclass" src="">
+                                                                                                                            <div class="top-right">Classroom 2120</div>
+                                                                                                                        </div>
+
+                                                                                                                        <div class="Room" style="float: left">
+                                                                                                                            <img id="bgaval2125" class="imgclass" src="">
+                                                                                                                            <div class="top-left">Classroom 2125</div>
+
+                                                                                                                            <img id="bgaval2240" class="imgclass" src="">
+                                                                                                                            <div class="top-right">Classroom 2240</div>
+                                                                                                                        </div>
+
+                                                                                                                        <div class="Room" style="float: left">
+                                                                                                                            <img id="bgaval2245" class="imgclass" src="">
+                                                                                                                            <div class="top-left">Classroom 2245</div>
+
+                                                                                                                            <img id="bgaval2250" class="imgclass" src="">
+                                                                                                                            <div class="top-right">Classroom 2250</div>
+                                                                                                                        </div>
+
+                                                                                                                        <div class="Room" style="float: left">
+                                                                                                                            <img id="bgaval3115" class="imgclass" src="">
+                                                                                                                            <div class="top-left">Classroom 3115</div>
+
+                                                                                                                            <img id="bgaval3120" class="imgclass" src="">
+                                                                                                                            <div class="top-right">Classroom 3120</div>
+                                                                                                                        </div>
+
+                                                                                                                        <div class="Room" style="float: left">
+                                                                                                                            <img id="bgaval3125" class="imgclass" src="">
+                                                                                                                            <div class="top-left">Classroom 3125</div>
+
+                                                                                                                            <img id="bgaval3220" class="imgclass" src="">
+                                                                                                                            <div class="top-right">Classroom 3220</div>
+                                                                                                                        </div>
+
+                                                                                                                        <div class="Room" style="float: left">
+                                                                                                                            <img id="bgaval3225" class="imgclass" src="">
+                                                                                                                            <div class="top-left">Classroom 3225</div>
+
+                                                                                                                            <img id="bgaval3230" class="imgclass" src="">
+                                                                                                                            <div class="top-right">Classroom 3230</div>
+                                                                                                                        </div>
+
+                                                                                                                        <div class="Room" style="float: left">
+                                                                                                                            <img id="bgaval3240" class="imgclass" src="">
+                                                                                                                            <div class="top-left">Classroom 3240</div>
+
+                                                                                                                            <img id="bgaval3260" class="imgclass" src="">
+                                                                                                                            <div class="top-right">Classroom 3260</div>
+                                                                                                                        </div>
+
+                                                                                                                        <div class="Room" style="float: left">
+                                                                                                                            <img id="bgaval3265" class="imgclass" src="">
+                                                                                                                            <div class="top-left">Classroom 3265</div>
+
+                                                                                                                            <img id="bgaval4210" class="imgclass" src="">
+                                                                                                                            <div class="top-right">Classroom 4210</div>
+                                                                                                                        </div>
+
+                                                                                                                        <div class="Room" style="float: left">
+                                                                                                                            <img id="bgaval4225" class="imgclass" src="">
+                                                                                                                            <div class="top-left">Classroom 4225</div>
+
+                                                                                                                            <img id="bgaval4230" class="imgclass" src="">
+                                                                                                                            <div class="top-right">Classroom 4230</div>
+
+                                                                                                                        </div>
+
+
+
+
+    </div>
+
+</body </html>

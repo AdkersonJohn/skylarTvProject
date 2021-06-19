@@ -1,0 +1,2051 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="java.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Barlow:300&display=swap');
+
+        body {
+            background-color: #212331;
+            width: 97.8%;
+            color: #f1f1f1;
+            font-family: 'Barlow', sans-serif;
+            text-align: center;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            margin-top: 3%;
+        }
+
+
+        #wrapper {
+            width: 100%;
+            padding: 0px;
+            border-spacing: 12px;
+            text-align: center;
+
+        }
+
+
+        .infocontainer {
+            background-color: #252b3a;
+            padding: 0px;
+            border-radius: 5px;
+            width: 31.3%;
+            margin: 1%;
+            margin-bottom: 3%;
+            float: left;
+            height: auto;
+        }
+
+
+        .box {
+            border-radius: 5px;
+            background-color: #2d3345;
+            width: 95%;
+            padding-left: 2.5%;
+            padding-right: 2.5%;
+            text-align: center;
+        }
+
+        .circles {
+            display: inline-flex;
+            text-align: center;
+            width: 100%;
+        }
+
+        .cpu,
+        .ram {
+            width: 45%;
+            padding-top: 2.5%;
+            padding-left: 2.5%;
+            padding-right: 2.5%;
+        }
+
+        .datacont {
+            width: 100%;
+            padding-bottom: 100%;
+            position: relative;
+        }
+
+        .datacont>div {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+    </style>
+</head>
+
+<body>
+    
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#config-web-app -->
+    
+    <div id="wrapper">
+        <div class="infocontainer">
+            <div class="title">
+                LCBROOM-0050
+            </div>
+            <div class="box">
+                <div class="circles">
+                    <div class="cpu">
+                        <div class="datacont">
+                            <div id="bar"></div>
+                        </div>
+                        CPU
+                    </div>
+                    <div class="ram">
+                        <div class="datacont">
+                            <div id="bar2"></div>
+                        </div>
+                        RAM
+                    </div>
+                </div>
+            </div>
+            <div class="footer" id="info0050">
+                IP Address: 10.37.5.245<br>Last reboot: 21D 14Hr
+            </div>
+        </div>
+        <div class="infocontainer">
+            <div class="title">
+                LCBROOM-0070
+            </div>
+            <div class="box">
+                <div class="circles">
+                    <div class="cpu">
+                        <div class="datacont">
+                            <div id="bar3"></div>
+                        </div>
+                        CPU
+                    </div>
+                    <div class="ram">
+                        <div class="datacont">
+                            <div id="bar4"></div>
+                        </div>
+                        RAM
+                    </div>
+                </div>
+            </div>
+            <div class="footer" id="info0070">
+                IP Address: 10.37.5.245<br>Last reboot: 21D 14Hr
+            </div>
+        </div>
+        <div class="infocontainer">
+            <div class="title">
+                LCBROOM-1210
+            </div>
+            <div class="box">
+                <div class="circles">
+                    <div class="cpu">
+                        <div class="datacont">
+                            <div id="bar5"></div>
+                        </div>
+                        CPU
+                    </div>
+                    <div class="ram">
+                        <div class="datacont">
+                            <div id="bar6"></div>
+                        </div>
+                        RAM
+                    </div>
+                </div>
+            </div>
+            <div class="footer" id="info1210">
+                IP Address: 10.37.5.245<br>Last reboot: 21D 14Hr
+            </div>
+        </div>
+        <div class="infocontainer">
+            <div class="title">
+                LCBROOM-1220
+            </div>
+            <div class="box">
+                <div class="circles">
+                    <div class="cpu">
+                        <div class="datacont">
+                            <div id="bar7"></div>
+                        </div>
+                        CPU
+                    </div>
+                    <div class="ram">
+                        <div class="datacont">
+                            <div id="bar8"></div>
+                        </div>
+                        RAM
+                    </div>
+                </div>
+            </div>
+            <div class="footer" id="info1220">
+                IP Address: 10.37.5.245<br>Last reboot: 21D 14Hr
+            </div>
+        </div>
+    
+        <div class="infocontainer">
+            <div class="title">
+                LCBROOM-1410
+            </div>
+            <div class="box">
+                <div class="circles">
+                    <div class="cpu">
+                        <div class="datacont">
+                            <div id="bar9"></div>
+                        </div>
+                        CPU
+                    </div>
+                    <div class="ram">
+                        <div class="datacont">
+                            <div id="bar10"></div>
+                        </div>
+                        RAM
+                    </div>
+                </div>
+            </div>
+            <div class="footer" id="info1410">
+                IP Address: 10.37.5.245<br>Last reboot: 21D 14Hr
+            </div>
+        </div>
+        
+        <div class="infocontainer">
+            <div class="title">
+                LCBROOM-2110
+            </div>
+            <div class="box">
+                <div class="circles">
+                    <div class="cpu">
+                        <div class="datacont">
+                            <div id="bar11"></div>
+                        </div>
+                        CPU
+                    </div>
+                    <div class="ram">
+                        <div class="datacont">
+                            <div id="bar12"></div>
+                        </div>
+                        RAM
+                    </div>
+                </div>
+            </div>
+            <div class="footer" id="info2110">
+                IP Address: 10.37.5.245<br>Last reboot: 21D 14Hr
+            </div>
+        </div>
+        <div class="infocontainer">
+            <div class="title">
+                LCBROOM-2120
+            </div>
+            <div class="box">
+                <div class="circles">
+                    <div class="cpu">
+                        <div class="datacont">
+                            <div id="bar13"></div>
+                        </div>
+                        CPU
+                    </div>
+                    <div class="ram">
+                        <div class="datacont">
+                            <div id="bar14"></div>
+                        </div>
+                        RAM
+                    </div>
+                </div>
+            </div>
+            <div class="footer" id="info2120">
+                IP Address: 10.37.5.245<br>Last reboot: 21D 14Hr
+            </div>
+        </div>
+        <div class="infocontainer">
+            <div class="title">
+                LCBROOM-2125
+            </div>
+            <div class="box">
+                <div class="circles">
+                    <div class="cpu">
+                        <div class="datacont">
+                            <div id="bar15"></div>
+                        </div>
+                        CPU
+                    </div>
+                    <div class="ram">
+                        <div class="datacont">
+                            <div id="bar16"></div>
+                        </div>
+                        RAM
+                    </div>
+                </div>
+            </div>
+            <div class="footer" id="info2125">
+                IP Address: 10.37.5.245<br>Last reboot: 21D 14Hr
+            </div>
+        </div>
+        <div class="infocontainer">
+            <div class="title">
+                LCBROOM-2240
+            </div>
+            <div class="box">
+                <div class="circles">
+                    <div class="cpu">
+                        <div class="datacont">
+                            <div id="bar17"></div>
+                        </div>
+                        CPU
+                    </div>
+                    <div class="ram">
+                        <div class="datacont">
+                            <div id="bar18"></div>
+                        </div>
+                        RAM
+                    </div>
+                </div>
+            </div>
+            <div class="footer" id="info2240">
+                IP Address: 10.37.5.245<br>Last reboot: 21D 14Hr
+            </div>
+        </div>
+        <div class="infocontainer">
+            <div class="title">
+                LCBROOM-2245
+            </div>
+            <div class="box">
+                <div class="circles">
+                    <div class="cpu">
+                        <div class="datacont">
+                            <div id="bar19"></div>
+                        </div>
+                        CPU
+                    </div>
+                    <div class="ram">
+                        <div class="datacont">
+                            <div id="bar20"></div>
+                        </div>
+                        RAM
+                    </div>
+                </div>
+            </div>
+            <div class="footer" id="info2245">
+                IP Address: 10.37.5.245<br>Last reboot: 21D 14Hr
+            </div>
+        </div>
+        <div class="infocontainer">
+            <div class="title">
+                LCBROOM-2250
+            </div>
+            <div class="box">
+                <div class="circles">
+                    <div class="cpu">
+                        <div class="datacont">
+                            <div id="bar21"></div>
+                        </div>
+                        CPU
+                    </div>
+                    <div class="ram">
+                        <div class="datacont">
+                            <div id="bar22"></div>
+                        </div>
+                        RAM
+                    </div>
+                </div>
+            </div>
+            <div class="footer" id="info2250">
+                IP Address: 10.37.5.245<br>Last reboot: 21D 14Hr
+            </div>
+        </div>
+        <div class="infocontainer">
+            <div class="title">
+                LCBROOM-3115
+            </div>
+            <div class="box">
+                <div class="circles">
+                    <div class="cpu">
+                        <div class="datacont">
+                            <div id="bar23"></div>
+                        </div>
+                        CPU
+                    </div>
+                    <div class="ram">
+                        <div class="datacont">
+                            <div id="bar24"></div>
+                        </div>
+                        RAM
+                    </div>
+                </div>
+            </div>
+            <div class="footer" id="info3115">
+                IP Address: 10.37.5.245<br>Last reboot: 21D 14Hr
+            </div>
+        </div>
+        <div class="infocontainer">
+            <div class="title">
+                LCBROOM-3125
+            </div>
+            <div class="box">
+                <div class="circles">
+                    <div class="cpu">
+                        <div class="datacont">
+                            <div id="bar25"></div>
+                        </div>
+                        CPU
+                    </div>
+                    <div class="ram">
+                        <div class="datacont">
+                            <div id="bar26"></div>
+                        </div>
+                        RAM
+                    </div>
+                </div>
+            </div>
+            <div class="footer" id="info3125">
+                IP Address: 10.37.5.245<br>Last reboot: 21D 14Hr
+            </div>
+        </div>
+        <div class="infocontainer">
+            <div class="title">
+                LCBROOM-3220
+            </div>
+            <div class="box">
+                <div class="circles">
+                    <div class="cpu">
+                        <div class="datacont">
+                            <div id="bar29"></div>
+                        </div>
+                        CPU
+                    </div>
+                    <div class="ram">
+                        <div class="datacont">
+                            <div id="bar30"></div>
+                        </div>
+                        RAM
+                    </div>
+                </div>
+            </div>
+            <div class="footer" id="info3220">
+                IP Address: 10.37.5.245<br>Last reboot: 21D 14Hr
+            </div>
+        </div>
+        <div class="infocontainer">
+            <div class="title">
+                LCBROOM-3225
+            </div>
+            <div class="box">
+                <div class="circles">
+                    <div class="cpu">
+                        <div class="datacont">
+                            <div id="bar31"></div>
+                        </div>
+                        CPU
+                    </div>
+                    <div class="ram">
+                        <div class="datacont">
+                            <div id="bar32"></div>
+                        </div>
+                        RAM
+                    </div>
+                </div>
+            </div>
+            <div class="footer" id="info3225">
+                IP Address: 10.37.5.245<br>Last reboot: 21D 14Hr
+            </div>
+        </div>
+        <div class="infocontainer">
+            <div class="title">
+                LCBROOM-3230
+            </div>
+            <div class="box">
+                <div class="circles">
+                    <div class="cpu">
+                        <div class="datacont">
+                            <div id="bar33"></div>
+                        </div>
+                        CPU
+                    </div>
+                    <div class="ram">
+                        <div class="datacont">
+                            <div id="bar34"></div>
+                        </div>
+                        RAM
+                    </div>
+                </div>
+            </div>
+            <div class="footer" id="info3230">
+                IP Address: 10.37.5.245<br>Last reboot: 21D 14Hr
+            </div>
+        </div>
+        <div class="infocontainer">
+            <div class="title">
+                LCBROOM-3240
+            </div>
+            <div class="box">
+                <div class="circles">
+                    <div class="cpu">
+                        <div class="datacont">
+                            <div id="bar35"></div>
+                        </div>
+                        CPU
+                    </div>
+                    <div class="ram">
+                        <div class="datacont">
+                            <div id="bar36"></div>
+                        </div>
+                        RAM
+                    </div>
+                </div>
+            </div>
+            <div class="footer" id="info3240">
+                IP Address: 10.37.5.245<br>Last reboot: 21D 14Hr
+            </div>
+        </div>
+        <div class="infocontainer">
+            <div class="title">
+                LCBROOM-3260
+            </div>
+            <div class="box">
+                <div class="circles">
+                    <div class="cpu">
+                        <div class="datacont">
+                            <div id="bar37"></div>
+                        </div>
+                        CPU
+                    </div>
+                    <div class="ram">
+                        <div class="datacont">
+                            <div id="bar38"></div>
+                        </div>
+                        RAM
+                    </div>
+                </div>
+            </div>
+            <div class="footer" id="info3260">
+                IP Address: 10.37.5.245<br>Last reboot: 21D 14Hr
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        var bar = new RadialProgress(document.getElementById("bar"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar.setIndeterminate(false);
+        bar.setValue(0.4);
+
+        var bar2 = new RadialProgress(document.getElementById("bar2"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar2.setIndeterminate(false);
+        bar2.setValue(0.4);
+
+        var bar3 = new RadialProgress(document.getElementById("bar3"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar3.setIndeterminate(false);
+        bar3.setValue(0.4);
+
+        var bar4 = new RadialProgress(document.getElementById("bar4"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar4.setIndeterminate(false);
+        bar4.setValue(0.4);
+
+        var bar5 = new RadialProgress(document.getElementById("bar5"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar5.setIndeterminate(false);
+        bar5.setValue(0.4);
+
+        var bar6 = new RadialProgress(document.getElementById("bar6"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar6.setIndeterminate(false);
+        bar6.setValue(0.4);
+
+        var bar7 = new RadialProgress(document.getElementById("bar7"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar7.setIndeterminate(false);
+        bar7.setValue(0.4);
+
+        var bar8 = new RadialProgress(document.getElementById("bar8"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar8.setIndeterminate(false);
+        bar8.setValue(0.4);
+
+        var bar9 = new RadialProgress(document.getElementById("bar9"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar9.setIndeterminate(false);
+        bar9.setValue(0.4);
+
+        var bar10 = new RadialProgress(document.getElementById("bar10"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar10.setIndeterminate(false);
+        bar10.setValue(0.4);
+
+        var bar11 = new RadialProgress(document.getElementById("bar11"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar11.setIndeterminate(false);
+        bar11.setValue(0.4);
+
+        var bar12 = new RadialProgress(document.getElementById("bar12"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar12.setIndeterminate(false);
+        bar12.setValue(0.4);
+
+        var bar13 = new RadialProgress(document.getElementById("bar13"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar13.setIndeterminate(false);
+        bar13.setValue(0.4);
+
+        var bar14 = new RadialProgress(document.getElementById("bar14"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar14.setIndeterminate(false);
+        bar14.setValue(0.4);
+
+        var bar15 = new RadialProgress(document.getElementById("bar15"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar15.setIndeterminate(false);
+        bar15.setValue(0.4);
+
+        var bar16 = new RadialProgress(document.getElementById("bar16"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar16.setIndeterminate(false);
+        bar16.setValue(0.4);
+
+        var bar17 = new RadialProgress(document.getElementById("bar17"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar17.setIndeterminate(false);
+        bar17.setValue(0.4);
+
+        var bar18 = new RadialProgress(document.getElementById("bar18"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar18.setIndeterminate(false);
+        bar18.setValue(0.4);
+
+        var bar19 = new RadialProgress(document.getElementById("bar19"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar19.setIndeterminate(false);
+        bar19.setValue(0.4);
+
+        var bar20 = new RadialProgress(document.getElementById("bar20"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar20.setIndeterminate(false);
+        bar20.setValue(0.4);
+
+        var bar21 = new RadialProgress(document.getElementById("bar21"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar21.setIndeterminate(false);
+        bar21.setValue(0.4);
+
+        var bar22 = new RadialProgress(document.getElementById("bar22"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar22.setIndeterminate(false);
+        bar22.setValue(0.4);
+
+        var bar23 = new RadialProgress(document.getElementById("bar23"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar23.setIndeterminate(false);
+        bar23.setValue(0.4);
+
+        var bar24 = new RadialProgress(document.getElementById("bar24"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar24.setIndeterminate(false);
+        bar24.setValue(0.4);
+
+        var bar25 = new RadialProgress(document.getElementById("bar25"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar25.setIndeterminate(false);
+        bar25.setValue(0.4);
+
+        var bar26 = new RadialProgress(document.getElementById("bar26"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar26.setIndeterminate(false);
+        bar26.setValue(0.4);
+
+    
+        var bar29 = new RadialProgress(document.getElementById("bar29"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar29.setIndeterminate(false);
+        bar29.setValue(0.4);
+
+        var bar30 = new RadialProgress(document.getElementById("bar30"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar30.setIndeterminate(false);
+        bar30.setValue(0.4);
+
+        var bar31 = new RadialProgress(document.getElementById("bar31"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar31.setIndeterminate(false);
+        bar31.setValue(0.4);
+
+        var bar32 = new RadialProgress(document.getElementById("bar32"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar32.setIndeterminate(false);
+        bar32.setValue(0.4);
+
+        var bar33 = new RadialProgress(document.getElementById("bar33"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar33.setIndeterminate(false);
+        bar33.setValue(0.4);
+
+        var bar34 = new RadialProgress(document.getElementById("bar34"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar34.setIndeterminate(false);
+        bar34.setValue(0.4);
+
+        var bar35 = new RadialProgress(document.getElementById("bar35"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar35.setIndeterminate(false);
+        bar35.setValue(0.4);
+
+        var bar36 = new RadialProgress(document.getElementById("bar36"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar36.setIndeterminate(false);
+        bar36.setValue(0.4);
+
+        var bar37 = new RadialProgress(document.getElementById("bar37"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar37.setIndeterminate(false);
+        bar37.setValue(0.4);
+
+        var bar38 = new RadialProgress(document.getElementById("bar38"), {
+            indeterminate: true,
+            colorFg: "#00d1aa",
+            thick: 1.5,
+            fixedTextSize: 0.2
+        });
+        bar38.setIndeterminate(false);
+        bar38.setValue(0.4);
+
+    </script>
+    
+    
+    <script>
+         time = setInterval(function() {
+             getCompInfo0050("LCBROOM0050-INX");
+             getCompInfo0070("LCBROOM0070-INX");
+             getCompInfo1210("LCBROOM1210-INX");
+             getCompInfo1220("LCBROOM1220-INX");
+             getCompInfo1410("LCBROOM1410-INX");
+             getCompInfo2110("LCBROOM2110-INX");
+             getCompInfo2120("LCBROOM2120-INX");
+             getCompInfo2125("LCBROOM2125-INX");
+             getCompInfo2240("LCBROOM2240-INX");
+             getCompInfo2245("LCBROOM2245-INX");
+             getCompInfo2250("LCBROOM2250-INX");
+             getCompInfo3115("LCBROOM3115-INX");
+             getCompInfo3125("LCBROOM3125-INX");
+             getCompInfo3220("LCBROOM3220-INX");
+             getCompInfo3225("LCBROOM3225-INX");
+             getCompInfo3230("LCBROOM3230-INX");
+             getCompInfo3240("LCBROOM3240-INX");
+             getCompInfo3260("LCBROOM3260-INX");
+             
+             
+             
+        }, 3000);
+        
+        
+
+        function getCompInfo0050(compname) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    fillCompInfo0050(this);
+                }
+            };
+
+            var url = "http://snowautomation.msbb.uc.edu/API/compinfo/program/parsecomp.sh?" + compname;
+            console.log(url);
+
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+        
+        function getCompInfo0070(compname) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    fillCompInfo0070(this);
+                }
+            };
+
+            var url = "http://snowautomation.msbb.uc.edu/API/compinfo/program/parsecomp.sh?" + compname;
+            console.log(url);
+
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+        
+        function getCompInfo1210(compname) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    fillCompInfo1210(this);
+                }
+            };
+
+            var url = "http://snowautomation.msbb.uc.edu/API/compinfo/program/parsecomp.sh?" + compname;
+            console.log(url);
+
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+        
+        function getCompInfo1220(compname) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    fillCompInfo1220(this);
+                }
+            };
+
+            var url = "http://snowautomation.msbb.uc.edu/API/compinfo/program/parsecomp.sh?" + compname;
+            console.log(url);
+
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+        
+        function getCompInfo1410(compname) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    fillCompInfo1410(this);
+                }
+            };
+
+            var url = "http://snowautomation.msbb.uc.edu/API/compinfo/program/parsecomp.sh?" + compname;
+            console.log(url);
+
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+        
+        function getCompInfo2110(compname) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    fillCompInfo2110(this);
+                }
+            };
+
+            var url = "http://snowautomation.msbb.uc.edu/API/compinfo/program/parsecomp.sh?" + compname;
+            console.log(url);
+
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+        
+        function getCompInfo2120(compname) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    fillCompInfo2120(this);
+                }
+            };
+
+            var url = "http://snowautomation.msbb.uc.edu/API/compinfo/program/parsecomp.sh?" + compname;
+            console.log(url);
+
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+        
+        function getCompInfo2125(compname) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    fillCompInfo2125(this);
+                }
+            };
+
+            var url = "http://snowautomation.msbb.uc.edu/API/compinfo/program/parsecomp.sh?" + compname;
+            console.log(url);
+
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+        
+        function getCompInfo2240(compname) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    fillCompInfo2240(this);
+                }
+            };
+
+            var url = "http://snowautomation.msbb.uc.edu/API/compinfo/program/parsecomp.sh?" + compname;
+            console.log(url);
+
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+        
+        function getCompInfo2245(compname) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    fillCompInfo2245(this);
+                }
+            };
+
+            var url = "http://snowautomation.msbb.uc.edu/API/compinfo/program/parsecomp.sh?" + compname;
+            console.log(url);
+
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+        
+        function getCompInfo2250(compname) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    fillCompInfo2250(this);
+                }
+            };
+
+            var url = "http://snowautomation.msbb.uc.edu/API/compinfo/program/parsecomp.sh?" + compname;
+            console.log(url);
+
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+        
+        function getCompInfo3115(compname) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    fillCompInfo3115(this);
+                }
+            };
+
+            var url = "http://snowautomation.msbb.uc.edu/API/compinfo/program/parsecomp.sh?" + compname;
+            console.log(url);
+
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+        
+        function getCompInfo3120(compname) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    fillCompInfo3120(this);
+                }
+            };
+
+            var url = "http://snowautomation.msbb.uc.edu/API/compinfo/program/parsecomp.sh?" + compname;
+            console.log(url);
+
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+        
+        function getCompInfo3125(compname) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    fillCompInfo3125(this);
+                }
+            };
+
+            var url = "http://snowautomation.msbb.uc.edu/API/compinfo/program/parsecomp.sh?" + compname;
+            console.log(url);
+
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+        
+        
+        function getCompInfo3220(compname) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    fillCompInfo3220(this);
+                }
+            };
+
+            var url = "http://snowautomation.msbb.uc.edu/API/compinfo/program/parsecomp.sh?" + compname;
+            console.log(url);
+
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+        
+        function getCompInfo3225(compname) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    fillCompInfo3225(this);
+                }
+            };
+
+            var url = "http://snowautomation.msbb.uc.edu/API/compinfo/program/parsecomp.sh?" + compname;
+            console.log(url);
+
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+        
+        function getCompInfo3230(compname) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    fillCompInfo3230(this);
+                }
+            };
+
+            var url = "http://snowautomation.msbb.uc.edu/API/compinfo/program/parsecomp.sh?" + compname;
+            console.log(url);
+
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+        
+        function getCompInfo3240(compname) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    fillCompInfo3240(this);
+                }
+            };
+
+            var url = "http://snowautomation.msbb.uc.edu/API/compinfo/program/parsecomp.sh?" + compname;
+            console.log(url);
+
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+        
+        function getCompInfo3260(compname) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    fillCompInfo3260(this);
+                }
+            };
+
+            var url = "http://snowautomation.msbb.uc.edu/API/compinfo/program/parsecomp.sh?" + compname;
+            console.log(url);
+
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+        
+        function getCompInfo3265(compname) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    fillCompInfo3265(this);
+                }
+            };
+
+            var url = "http://snowautomation.msbb.uc.edu/API/compinfo/program/parsecomp.sh?" + compname;
+            console.log(url);
+
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+        
+        function getCompInfo4210(compname) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    fillCompInfo4210(this);
+                }
+            };
+
+            var url = "http://snowautomation.msbb.uc.edu/API/compinfo/program/parsecomp.sh?" + compname;
+            console.log(url);
+
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+        
+        function getCompInfo4225(compname) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    fillCompInfo4225(this);
+                }
+            };
+
+            var url = "http://snowautomation.msbb.uc.edu/API/compinfo/program/parsecomp.sh?" + compname;
+            console.log(url);
+
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+        
+        function getCompInfo4230(compname) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    fillCompInfo4230(this);
+                }
+            };
+
+            var url = "http://snowautomation.msbb.uc.edu/API/compinfo/program/parsecomp.sh?" + compname;
+            console.log(url);
+
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+        
+        function getCompInfo4245(compname) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    fillCompInfo4245(this);
+                }
+            };
+
+            var url = "http://snowautomation.msbb.uc.edu/API/compinfo/program/parsecomp.sh?" + compname;
+            console.log(url);
+
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+        
+        function fillCompInfo0050(XML) {
+            var info = XML.responseXML;
+
+
+            ip = "IP Address: " +
+                info.getElementsByTagName("ip")[0].childNodes[0].nodeValue;
+    
+                
+            boot = "Last Reboot: " +
+                info.getElementsByTagName("boottime")[0].childNodes[0].nodeValue;
+
+            document.getElementById("info0050").innerHTML = ip + boot
+            
+            
+            
+            //Code for cpu percentage circle
+            var cpuUse = info.getElementsByTagName("cpu_usage")[0].childNodes[0].nodeValue;
+            
+            
+            bar.setIndeterminate(false);
+            bar.setValue(cpuUse);
+
+            
+            
+            //Code for RAM percentage circle
+            var memUse = info.getElementsByTagName("memusage")[0].childNodes[0].nodeValue;
+            
+            
+            bar2.setIndeterminate(false);
+            bar2.setValue(memUse);
+            bar2.draw(false);
+        }
+        
+        function fillCompInfo0070(XML) {
+            var info = XML.responseXML;
+
+
+            ip = "IP Address: " +
+                info.getElementsByTagName("ip")[0].childNodes[0].nodeValue;
+    
+                
+            boot = "Last Reboot: " +
+                info.getElementsByTagName("boottime")[0].childNodes[0].nodeValue;
+
+            document.getElementById("info0070").innerHTML = ip + boot
+            
+            
+            
+            //Code for cpu percentage circle
+            var cpuUse = info.getElementsByTagName("cpu_usage")[0].childNodes[0].nodeValue;
+            
+            
+            bar3.setIndeterminate(false);
+            bar3.setValue(cpuUse);
+
+            
+            
+            //Code for RAM percentage circle
+            var memUse = info.getElementsByTagName("memusage")[0].childNodes[0].nodeValue;
+            
+            
+            bar4.setIndeterminate(false);
+            bar4.setValue(memUse);
+            bar4.draw(false);
+        }
+        
+        function fillCompInfo1210(XML) {
+            var info = XML.responseXML;
+
+
+            ip = "IP Address: " +
+                info.getElementsByTagName("ip")[0].childNodes[0].nodeValue;
+    
+                
+            boot = "Last Reboot: " +
+                info.getElementsByTagName("boottime")[0].childNodes[0].nodeValue;
+
+            document.getElementById("info1210").innerHTML = ip + boot
+            
+            
+            
+            //Code for cpu percentage circle
+            var cpuUse = info.getElementsByTagName("cpu_usage")[0].childNodes[0].nodeValue;
+            
+            
+            bar5.setIndeterminate(false);
+            bar5.setValue(cpuUse);
+
+            
+            
+            //Code for RAM percentage circle
+            var memUse = info.getElementsByTagName("memusage")[0].childNodes[0].nodeValue;
+            
+            
+            bar6.setIndeterminate(false);
+            bar6.setValue(memUse);
+            bar6.draw(false);
+        }
+        
+        function fillCompInfo1220(XML) {
+            var info = XML.responseXML;
+
+
+            ip = "IP Address: " +
+                info.getElementsByTagName("ip")[0].childNodes[0].nodeValue;
+    
+                
+            boot = "Last Reboot: " +
+                info.getElementsByTagName("boottime")[0].childNodes[0].nodeValue;
+
+            document.getElementById("info1220").innerHTML = ip + boot
+            
+            
+            
+            //Code for cpu percentage circle
+            var cpuUse = info.getElementsByTagName("cpu_usage")[0].childNodes[0].nodeValue;
+            
+            
+            bar7.setIndeterminate(false);
+            bar7.setValue(cpuUse);
+
+            
+            
+            //Code for RAM percentage circle
+            var memUse = info.getElementsByTagName("memusage")[0].childNodes[0].nodeValue;
+            
+            
+            bar8.setIndeterminate(false);
+            bar8.setValue(memUse);
+            bar8.draw(false);
+        }
+        
+        function fillCompInfo1410(XML) {
+            var info = XML.responseXML;
+
+
+            ip = "IP Address: " +
+                info.getElementsByTagName("ip")[0].childNodes[0].nodeValue;
+    
+                
+            boot = "Last Reboot: " +
+                info.getElementsByTagName("boottime")[0].childNodes[0].nodeValue;
+
+            document.getElementById("info1410").innerHTML = ip + boot
+            
+            
+            
+            //Code for cpu percentage circle
+            var cpuUse = info.getElementsByTagName("cpu_usage")[0].childNodes[0].nodeValue;
+            
+            
+            bar9.setIndeterminate(false);
+            bar9.setValue(cpuUse);
+
+            
+            
+            //Code for RAM percentage circle
+            var memUse = info.getElementsByTagName("memusage")[0].childNodes[0].nodeValue;
+            
+            
+            bar10.setIndeterminate(false);
+            bar10.setValue(memUse);
+            bar10.draw(false);
+        }
+        
+        function fillCompInfo2110(XML) {
+            var info = XML.responseXML;
+
+
+            ip = "IP Address: " +
+                info.getElementsByTagName("ip")[0].childNodes[0].nodeValue;
+    
+                
+            boot = "Last Reboot: " +
+                info.getElementsByTagName("boottime")[0].childNodes[0].nodeValue;
+
+            document.getElementById("info2110").innerHTML = ip + boot
+            
+            
+            
+            //Code for cpu percentage circle
+            var cpuUse = info.getElementsByTagName("cpu_usage")[0].childNodes[0].nodeValue;
+            
+            
+            bar11.setIndeterminate(false);
+            bar11.setValue(cpuUse);
+
+            
+            
+            //Code for RAM percentage circle
+            var memUse = info.getElementsByTagName("memusage")[0].childNodes[0].nodeValue;
+            
+            
+            bar12.setIndeterminate(false);
+            bar12.setValue(memUse);
+            bar12.draw(false);
+        }
+        
+        function fillCompInfo2120(XML) {
+            var info = XML.responseXML;
+
+
+            ip = "IP Address: " +
+                info.getElementsByTagName("ip")[0].childNodes[0].nodeValue;
+    
+                
+            boot = "Last Reboot: " +
+                info.getElementsByTagName("boottime")[0].childNodes[0].nodeValue;
+
+            document.getElementById("info2120").innerHTML = ip + boot
+            
+            
+            
+            //Code for cpu percentage circle
+            var cpuUse = info.getElementsByTagName("cpu_usage")[0].childNodes[0].nodeValue;
+            
+            
+            bar13.setIndeterminate(false);
+            bar13.setValue(cpuUse);
+
+            
+            
+            //Code for RAM percentage circle
+            var memUse = info.getElementsByTagName("memusage")[0].childNodes[0].nodeValue;
+            
+            
+            bar14.setIndeterminate(false);
+            bar14.setValue(memUse);
+            bar14.draw(false);
+        }
+        
+        function fillCompInfo2125(XML) {
+            var info = XML.responseXML;
+
+
+            ip = "IP Address: " +
+                info.getElementsByTagName("ip")[0].childNodes[0].nodeValue;
+    
+                
+            boot = "Last Reboot: " +
+                info.getElementsByTagName("boottime")[0].childNodes[0].nodeValue;
+
+            document.getElementById("info2125").innerHTML = ip + boot
+            
+            
+            
+            //Code for cpu percentage circle
+            var cpuUse = info.getElementsByTagName("cpu_usage")[0].childNodes[0].nodeValue;
+            
+            
+            bar15.setIndeterminate(false);
+            bar15.setValue(cpuUse);
+
+            
+            
+            //Code for RAM percentage circle
+            var memUse = info.getElementsByTagName("memusage")[0].childNodes[0].nodeValue;
+            
+            
+            bar16.setIndeterminate(false);
+            bar16.setValue(memUse);
+            bar16.draw(false);
+        }
+        
+        function fillCompInfo2240(XML) {
+            var info = XML.responseXML;
+
+
+            ip = "IP Address: " +
+                info.getElementsByTagName("ip")[0].childNodes[0].nodeValue;
+    
+                
+            boot = "Last Reboot: " +
+                info.getElementsByTagName("boottime")[0].childNodes[0].nodeValue;
+
+            document.getElementById("info2240").innerHTML = ip + boot
+            
+            
+            
+            //Code for cpu percentage circle
+            var cpuUse = info.getElementsByTagName("cpu_usage")[0].childNodes[0].nodeValue;
+            
+            
+            bar17.setIndeterminate(false);
+            bar17.setValue(cpuUse);
+
+            
+            
+            //Code for RAM percentage circle
+            var memUse = info.getElementsByTagName("memusage")[0].childNodes[0].nodeValue;
+            
+            
+            bar18.setIndeterminate(false);
+            bar18.setValue(memUse);
+            bar18.draw(false);
+        }
+        
+        function fillCompInfo2245(XML) {
+            var info = XML.responseXML;
+
+
+            ip = "IP Address: " +
+                info.getElementsByTagName("ip")[0].childNodes[0].nodeValue;
+    
+                
+            boot = "Last Reboot: " +
+                info.getElementsByTagName("boottime")[0].childNodes[0].nodeValue;
+
+            document.getElementById("info2245").innerHTML = ip + boot
+            
+            
+            
+            //Code for cpu percentage circle
+            var cpuUse = info.getElementsByTagName("cpu_usage")[0].childNodes[0].nodeValue;
+            
+            
+            bar19.setIndeterminate(false);
+            bar19.setValue(cpuUse);
+
+            
+            
+            //Code for RAM percentage circle
+            var memUse = info.getElementsByTagName("memusage")[0].childNodes[0].nodeValue;
+            
+            
+            bar20.setIndeterminate(false);
+            bar20.setValue(memUse);
+            bar20.draw(false);
+        }
+        
+        function fillCompInfo2250(XML) {
+            var info = XML.responseXML;
+
+
+            ip = "IP Address: " +
+                info.getElementsByTagName("ip")[0].childNodes[0].nodeValue;
+    
+                
+            boot = "Last Reboot: " +
+                info.getElementsByTagName("boottime")[0].childNodes[0].nodeValue;
+
+            document.getElementById("info2250").innerHTML = ip + boot
+            
+            
+            
+            //Code for cpu percentage circle
+            var cpuUse = info.getElementsByTagName("cpu_usage")[0].childNodes[0].nodeValue;
+            
+            
+            bar21.setIndeterminate(false);
+            bar21.setValue(cpuUse);
+
+            
+            
+            //Code for RAM percentage circle
+            var memUse = info.getElementsByTagName("memusage")[0].childNodes[0].nodeValue;
+            
+            
+            bar22.setIndeterminate(false);
+            bar22.setValue(memUse);
+            bar22.draw(false);
+        }
+        
+        function fillCompInfo3115(XML) {
+            var info = XML.responseXML;
+
+
+            ip = "IP Address: " +
+                info.getElementsByTagName("ip")[0].childNodes[0].nodeValue;
+    
+                
+            boot = "Last Reboot: " +
+                info.getElementsByTagName("boottime")[0].childNodes[0].nodeValue;
+
+            document.getElementById("info3115").innerHTML = ip + boot
+            
+            
+            
+            //Code for cpu percentage circle
+            var cpuUse = info.getElementsByTagName("cpu_usage")[0].childNodes[0].nodeValue;
+            
+            
+            bar23.setIndeterminate(false);
+            bar23.setValue(cpuUse);
+
+            
+            
+            //Code for RAM percentage circle
+            var memUse = info.getElementsByTagName("memusage")[0].childNodes[0].nodeValue;
+            
+            
+            bar24.setIndeterminate(false);
+            bar24.setValue(memUse);
+            bar24.draw(false);
+        }
+        
+        function fillCompInfo3125(XML) {
+            var info = XML.responseXML;
+
+
+            ip = "IP Address: " +
+                info.getElementsByTagName("ip")[0].childNodes[0].nodeValue;
+    
+                
+            boot = "Last Reboot: " +
+                info.getElementsByTagName("boottime")[0].childNodes[0].nodeValue;
+
+            document.getElementById("info3125").innerHTML = ip + boot
+            
+            
+            
+            //Code for cpu percentage circle
+            var cpuUse = info.getElementsByTagName("cpu_usage")[0].childNodes[0].nodeValue;
+            
+            
+            bar25.setIndeterminate(false);
+            bar25.setValue(cpuUse);
+
+            
+            
+            //Code for RAM percentage circle
+            var memUse = info.getElementsByTagName("memusage")[0].childNodes[0].nodeValue;
+            
+            
+            bar26.setIndeterminate(false);
+            bar26.setValue(memUse);
+            bar26.draw(false);
+        }
+        
+        function fillCompInfo3220(XML) {
+            var info = XML.responseXML;
+
+
+            ip = "IP Address: " +
+                info.getElementsByTagName("ip")[0].childNodes[0].nodeValue;
+    
+                
+            boot = "Last Reboot: " +
+                info.getElementsByTagName("boottime")[0].childNodes[0].nodeValue;
+
+            document.getElementById("info3220").innerHTML = ip + boot
+            
+            
+            
+            //Code for cpu percentage circle
+            var cpuUse = info.getElementsByTagName("cpu_usage")[0].childNodes[0].nodeValue;
+            
+            
+            bar29.setIndeterminate(false);
+            bar29.setValue(cpuUse);
+
+            
+            
+            //Code for RAM percentage circle
+            var memUse = info.getElementsByTagName("memusage")[0].childNodes[0].nodeValue;
+            
+            
+            bar30.setIndeterminate(false);
+            bar30.setValue(memUse);
+            bar30.draw(false);
+        }
+        
+        function fillCompInfo3225(XML) {
+            var info = XML.responseXML;
+
+
+            ip = "IP Address: " +
+                info.getElementsByTagName("ip")[0].childNodes[0].nodeValue;
+    
+                
+            boot = "Last Reboot: " +
+                info.getElementsByTagName("boottime")[0].childNodes[0].nodeValue;
+
+            document.getElementById("info3225").innerHTML = ip + boot
+            
+            
+            
+            //Code for cpu percentage circle
+            var cpuUse = info.getElementsByTagName("cpu_usage")[0].childNodes[0].nodeValue;
+            
+            
+            bar31.setIndeterminate(false);
+            bar31.setValue(cpuUse);
+
+            
+            
+            //Code for RAM percentage circle
+            var memUse = info.getElementsByTagName("memusage")[0].childNodes[0].nodeValue;
+            
+            
+            bar32.setIndeterminate(false);
+            bar32.setValue(memUse);
+            bar32.draw(false);
+        }
+        
+        function fillCompInfo3230(XML) {
+            var info = XML.responseXML;
+
+
+            ip = "IP Address: " +
+                info.getElementsByTagName("ip")[0].childNodes[0].nodeValue;
+    
+                
+            boot = "Last Reboot: " +
+                info.getElementsByTagName("boottime")[0].childNodes[0].nodeValue;
+
+            document.getElementById("info3230").innerHTML = ip + boot
+            
+            
+            
+            //Code for cpu percentage circle
+            var cpuUse = info.getElementsByTagName("cpu_usage")[0].childNodes[0].nodeValue;
+            
+            
+            bar33.setIndeterminate(false);
+            bar33.setValue(cpuUse);
+
+            
+            
+            //Code for RAM percentage circle
+            var memUse = info.getElementsByTagName("memusage")[0].childNodes[0].nodeValue;
+            
+            
+            bar34.setIndeterminate(false);
+            bar34.setValue(memUse);
+            bar34.draw(false);
+        }
+        
+        function fillCompInfo3240(XML) {
+            var info = XML.responseXML;
+
+
+            ip = "IP Address: " +
+                info.getElementsByTagName("ip")[0].childNodes[0].nodeValue;
+    
+                
+            boot = "Last Reboot: " +
+                info.getElementsByTagName("boottime")[0].childNodes[0].nodeValue;
+
+            document.getElementById("info3240").innerHTML = ip + boot
+            
+            
+            
+            //Code for cpu percentage circle
+            var cpuUse = info.getElementsByTagName("cpu_usage")[0].childNodes[0].nodeValue;
+            
+            
+            bar35.setIndeterminate(false);
+            bar35.setValue(cpuUse);
+
+            
+            
+            //Code for RAM percentage circle
+            var memUse = info.getElementsByTagName("memusage")[0].childNodes[0].nodeValue;
+            
+            
+            bar36.setIndeterminate(false);
+            bar36.setValue(memUse);
+            bar36.draw(false);
+        }
+        
+        function fillCompInfo3260(XML) {
+            var info = XML.responseXML;
+
+
+            ip = "IP Address: " +
+                info.getElementsByTagName("ip")[0].childNodes[0].nodeValue;
+    
+                
+            boot = "Last Reboot: " +
+                info.getElementsByTagName("boottime")[0].childNodes[0].nodeValue;
+
+            document.getElementById("info3260").innerHTML = ip + boot
+            
+            
+            
+            //Code for cpu percentage circle
+            var cpuUse = info.getElementsByTagName("cpu_usage")[0].childNodes[0].nodeValue;
+            
+            
+            bar37.setIndeterminate(false);
+            bar37.setValue(cpuUse);
+
+            
+            
+            //Code for RAM percentage circle
+            var memUse = info.getElementsByTagName("memusage")[0].childNodes[0].nodeValue;
+            
+            
+            bar38.setIndeterminate(false);
+            bar38.setValue(memUse);
+            bar38.draw(false);
+        }
+        
+        
+        
+    </script>
+    
+    <script>
+        
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAx0GLyK4xrgjLPusdICl49Uf1D-hPv0U8",
+            authDomain: "lindner-mcc.firebaseapp.com",
+            databaseURL: "https://lindner-mcc.firebaseio.com",
+            projectId: "lindner-mcc",
+            storageBucket: "lindner-mcc.appspot.com",
+            messagingSenderId: "155948911927",
+            appId: "1:155948911927:web:92d9568737ffd005"
+        };
+        
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+
+        db.collection("Main").doc("Info")
+            .onSnapshot(function(doc) {
+                const data = doc.data();
+                console.log("Current data: ", doc.data());
+
+                //Classroom 0040
+                if (data.status === "0040") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/InfoFocus.html';
+
+                }
+
+                //Classroom 0050
+                if (data.status === "0050") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/InfoFocus.html';
+
+                }
+
+                //Classroom 0060
+                if (data.status === "0060") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/InfoFocus.html';
+
+                }
+
+                //Classroom 0070
+                if (data.status === "0070") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/InfoFocus.html';
+
+                }
+            
+                //Classroom 1210
+                if (data.status === "1210") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/InfoFocus.html';
+
+                }
+
+                //Classroom 1215
+                if (data.status === "1215") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/InfoFocus.html';
+
+                }
+
+                //Classroom 1220
+                if (data.status === "1220") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/InfoFocus.html';
+
+
+                }
+            
+                //Classroom 1410
+                if (data.status === "1410") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/InfoFocus.html';
+
+                }
+            
+                //Classroom 2110
+                if (data.status === "2110") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/InfoFocus.html';
+
+                }
+
+                //Classroom 2120
+                if (data.status === "2120") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/InfoFocus.html';
+                    
+                }
+
+                //Classroom 2125
+                if (data.status === "2125") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/InfoFocus.html';
+
+                }
+
+                //Classroom 2240
+                if (data.status === "2240") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/InfoFocus.html';
+
+                }
+
+                //Classroom 2245
+                if (data.status === "2245") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/InfoFocus.html';
+
+                }
+
+                //Classroom 2250
+                if (data.status === "2250") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/InfoFocus.html';
+
+                }
+            
+                //Classroom 3115
+                if (data.status === "3115") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/InfoFocus.html';
+
+                }
+            
+                //Classroom 3120
+                if (data.status === "3120") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/InfoFocus.html';
+
+                }
+
+                //Classroom 3125
+                if (data.status === "3125") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/InfoFocus.html';
+
+                }
+
+                //Classroom 3220
+                if (data.status === "3220") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/InfoFocus.html';
+                    
+                }
+
+                //Classroom 3225
+                if (data.status === "3225") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/InfoFocus.html';
+
+                }
+
+                //Classroom 3230
+                if (data.status === "3230") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/InfoFocus.html';
+
+                }
+
+                //Classroom 3240
+                if (data.status === "3240") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/InfoFocus.html';
+                    
+                }
+
+                //Classroom 3260
+                if (data.status === "3260") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/InfoFocus.html';
+
+                }
+
+                //Classroom 3265
+                if (data.status === "3265") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/InfoFocus.html';
+                    
+                }
+
+                //Classroom 4210
+                if (data.status === "4210") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/InfoFocus.html';
+
+                }
+
+                //Classroom 4225
+                if (data.status === "4225") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/InfoFocus.html';
+
+                }
+
+                //Classroom 4230
+                if (data.status === "4230") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/InfoFocus.html';
+                    
+                }
+
+                //Classroom 4245
+                if (data.status === "4245") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/InfoFocus.html';
+
+                }
+            
+                //Classroom 4330
+                if (data.status === "4330") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/InfoFocus.html';
+                    
+
+                }
+            });
+    </script>
+    
+        <script type="text/javascript">
+        //60000 milliseconds is 1 minute
+        window.setInterval("checkForRefresh()", 60000);
+
+        function checkForRefresh() {
+            var now = new Date();
+            if (now.getHours() == 06 && now.getMinutes() == 0) {
+                location.reload();
+            }
+        }
+    </script>
+    
+</body>
+
+</html>

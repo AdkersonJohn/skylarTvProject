@@ -1,0 +1,866 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="java.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Barlow:300&display=swap');
+
+        body {
+            background-color: #212331;
+            width: 100%;
+            color: #f1f1f1;
+            font-family: 'Barlow', sans-serif;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            margin: 0;
+        }
+
+        #wrapper {
+            margin: 10px;
+            width: auto;
+        }
+
+        .row {
+            display: -ms-flex;
+            display: -webkit-flex;
+            display: inline-flex;
+            flex-wrap: wrap;
+        }
+
+        .textbox,
+        .imagebox {
+            flex: 1;
+        }
+
+        .textbox {
+            border-radius: 5px;
+            background-color: #2d3345;
+            width: 30%;
+            min-width: 325px;
+            padding: 1% 1% 1% 1%;
+            margin-right: 2%;
+            flex-grow: 0;
+            flex-shrink: 0;
+            flex-basis: 30%;
+        }
+
+        .sysinfo {
+            text-align: left;
+            font-size: 12px;
+        }
+
+        .imagebox {
+            border-radius: 5px;
+            background-color: #2d3345;
+            width: 64%;
+            min-width: 500px;
+            margin-left 2%;
+            padding: 1% 1% 1% 1%;
+            float: right;
+            flex-grow: 0;
+            flex-shrink: 0;
+            flex-basis: 64%;
+        }
+
+        .imagebox img {
+            width: 100%;
+        }
+
+        @media only screen and (max-width: 1000px) {
+            #wrapper {
+                margin-left: 10px;
+                margin-right: 10px;
+                width: auto;
+            }
+
+            .textbox {
+                width: 34%;
+                flex-grow: 0;
+                flex-shrink: 0;
+                flex-basis: 10%;
+                margin-bottom: 20px;
+            }
+
+            .imagebox {
+                float: left;
+                width: 94%;
+                flex-grow: 0;
+                flex-shrink: 0;
+                flex-basis: 98%;
+                margin-bottom: 20px;
+                margin-left: auto;
+                margin-right: auto;
+                min-width: 97.95%;
+            }
+
+            .infocontainer {
+                float: right;
+                width: 10%;
+                flex-grow: 0;
+                flex-shrink: 0;
+                flex-basis: 10%;
+                margin-bottom: 20px;
+            }
+
+        }
+
+        .infocontainer {
+            background-color: #2d3345;
+            border-radius: 5px;
+            min-width: 332px;
+            padding: 1% 1% 1% 1%;
+
+            flex-grow: 0;
+            flex-shrink: 0;
+            flex-basis: 30%;
+            float: right;
+        }
+
+        .circles {
+            display: inline-flex;
+            text-align: center;
+            width: 100%;
+        }
+
+        .cpu,
+        .ram {
+            width: 45%;
+            padding-top: -4%;
+            padding-left: 2.5%;
+            padding-right: 2.5%;
+        }
+
+        .datacont {
+            width: 100%;
+            padding-bottom: 100%;
+            position: relative;
+        }
+
+        .datacont>div {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .livecontainer {
+            position: relative;
+            text-align: center;
+            color: white;
+            min-width: 500px;
+            width: 100%;
+        }
+
+        .roomname {
+            position: absolute;
+            top: 100px;
+            left: 30px;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .hr {
+            border-top: .5px solid #f1f1f1;
+        }
+
+        .occupied {
+            position: absolute;
+            top: 150px;
+            left: 30px;
+            font-size: 15px;
+        }
+
+        .man {
+
+            position: absolute;
+            top: 180px;
+            left: 30px;
+            width: 15px;
+        }
+
+        .timeclk {
+            position: absolute;
+            top: 470px;
+            left: 30px;
+            font-size: 30px;
+            white-space: nowrap;
+        }
+
+        .transcontainer {
+            position: relative;
+            width: 100%;
+            opacity: 1;
+        }
+
+        div.transbox {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.6);
+            width: 230px;
+            height: 514px;
+            bottom: 0px;
+            left: 455.5px;
+        }
+
+        .next {
+            position: relative;
+            top: 100px;
+            left: 20px;
+            font-size: 20px;
+            text-align: left;
+        }
+
+        .people {
+            position: absolute;
+            top: 176px;
+            left: 50px;
+            width: 15px;
+        }
+
+        .classtime {
+            position: relative;
+            top: 110px;
+            left: 20px;
+            font-size: 20px;
+            text-align: left;
+        }
+
+        .classname {
+            position: relative;
+            top: 130px;
+            left: 20px;
+            font-size: 30px;
+            text-align: left;
+            width: 90%;
+        }
+
+        .organizer {
+            position: relative;
+            top: 170px;
+            left: 20px;
+            font-size: 20px;
+            opacity: 1.0;
+            text-align: left;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#config-web-app -->
+
+    
+    <div id="wrapper">
+        <div class="row">
+            <div class="imagebox">
+                
+                <iframe id="img" src="" onload="this.style.opacity='1'" height="428" width="686"> </iframe>
+            </div>
+            <div class="textbox">
+                <div class="div.box"></div>
+                <div class="sysinfo">
+                    <div id="hstnam"></div>
+                    <br>
+                    <div id="osname"></div>
+                    <br>
+                    <div id="ip"></div>
+                    <br>
+                    <div id="totmem"></div>
+                    <br>
+                    <div id="avmem"></div>
+                    <br>
+                    <div id="hddfsp"></div>
+                    <br>
+                    <div id="sernum"></div>
+                    <br>
+                    <div id="boot"></div>
+                </div>
+            </div>
+            <div class="infocontainer">
+                <br>
+                <br>
+                <div class="circles">
+                    <div class="cpu">
+                        <div class="datacont">
+                            <div id="bar"></div>
+                            <div id="bar1"></div>
+                        </div>
+                        CPU
+                    </div>
+                    <div class="ram">
+                        <div class="datacont">
+                            <div id="bar2"></div>
+                        </div>
+                        RAM
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="livecontainer">
+            <div class="imagebox">
+                <div class="roomname" id="roomnumb">Classroom 0040</div>
+                <div class="occupied" id="occ">Available</div>
+                <img id="bgaval" src="aval.jpg">
+                <div class="man"><img src="man.png"></div>
+                <div class="people" id="headcount">1</div>
+                <div class="timeclk" id="timet">12:35 PM</div>
+                <div class="transcontainer">
+                    <div class="transbox">
+                        <div class="next" id="roomstatus">Next</div>
+                        <div class="classtime" id="cltime">10:30 AM - 12:00 PM</div>
+                        <div class="classname" id="eventname">Marketing Meeting</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+         
+        //Real Time Clock
+        function display_c() {
+            var refreshct = 1000; // Refresh rate in milli seconds
+            mytime = setTimeout('display_ct()', refreshct)
+        }
+
+        function display_ct() {
+            document.getElementById('timet').innerHTML = "hello";
+            var timect = new Date();
+            var curtime = timect.toLocaleString('en-US', {
+                hour: 'numeric',
+                minute: 'numeric',
+                hour12: true
+            })
+            document.getElementById('timet').innerHTML = curtime;
+            display_c();
+
+        }
+
+    </script>
+
+
+    <script>
+        display_ct();
+
+    </script>
+
+    <script>
+        var stat = "";
+
+        function getRoom(status) {
+
+            stat = status;
+
+            var dateObj = new Date();
+            var month = ("0" + (dateObj.getMonth() + 1)).slice(-2);
+            var day = ("0" + dateObj.getDate()).slice(-2);
+            var year = dateObj.getFullYear();
+            var hours = dateObj.getHours();
+            var minutes = dateObj.getMinutes();
+            var seconds = dateObj.getSeconds();
+
+            var startdate = "";
+            startdate = year + month + day + "T" + hours + minutes + seconds;
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    myFunction(this, status);
+                }
+            };
+
+            var url = "http://snowautomation.msbb.uc.edu/API/schedule/getschedule.sh?" + status + "+" + startdate + "+" + startdate;
+
+            //url = "http://snowautomation.msbb.uc.edu/API/schedule/getschedule.sh?1220+20190826T085242+20190826T085242";
+
+            xhttp.open("GET", url, true);
+            xhttp.send();
+
+        }
+        //First try
+        //If there is event going on currently
+        function myFunction(xml, status) {
+
+            try {
+
+                var xmlDoc = xml.responseXML;
+
+                //Room Number
+                document.getElementById("roomnumb").innerHTML =
+                    xmlDoc.getElementsByTagName("space")[0].childNodes[0].nodeValue;
+
+                document.getElementById("occ").innerHTML = "Unavailable";
+                document.getElementById("bgaval").src = "unaval.jpg";
+                document.getElementById("roomstatus").innerHTML = "Current";
+
+                //Number of Ecpected People
+                //document.getElementById("headcount").innerHTML =
+                //xmlDoc.getElementsByTagName("r25:expected_count")[0].childNodes[0].nodeValue;
+
+                //Event Start and End Time
+                var dates = (xmlDoc.getElementsByTagName("start_dt")[0].childNodes[0].nodeValue);
+                console.log(dates);
+                var datee = (xmlDoc.getElementsByTagName("end_dt")[0].childNodes[0].nodeValue);
+
+                document.getElementById("cltime").innerHTML = (dates + " - " + datee);
+
+                document.getElementById("eventname").innerHTML =
+                    xmlDoc.getElementsByTagName("r25:event_name")[0].childNodes[0].nodeValue;
+
+            } catch (error) {
+
+                //Second try
+                //Events for rest of day
+                try {
+
+                    var xhttps = new XMLHttpRequest();
+                    xhttps.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            secondattempt(this.responseXML);
+
+                        }
+                    };
+
+                    var dateObj = new Date();
+                    var month = ("0" + (dateObj.getMonth() + 1)).slice(-2);
+                    var day = dateObj.getDate();
+                    var year = dateObj.getFullYear();
+                    var hours = ("0" + (dateObj.getHours())).slice(-2);
+                    var minutes = ("0" + (dateObj.getMinutes())).slice(-2);
+                    var seconds = ("0" + (dateObj.getSeconds())).slice(-2);
+
+                    var startdate = "";
+                    startdate = year + month + day + "T" + hours + minutes + seconds;
+
+                    var endtime = year + month + day + "T" + "235959";
+
+                    var url = "http://snowautomation.msbb.uc.edu/API/schedule/getschedule.sh?" + status + "+" + startdate + "+" + endtime;
+
+                    //url = "http://snowautomation.msbb.uc.edu/API/schedule/getschedule.sh?1220+20190826T085242+20190826T235959";
+                    console.log(url);
+
+                    xhttps.open("GET", url, true);
+                    xhttps.send();
+
+                    function secondattempt(xmls) {
+
+
+                        console.log(xmls);
+
+                        var xmlDoc = xmls;
+
+                        //Room Number + Avaliable/Unailable + Background
+                        try {
+                            document.getElementById("roomnumb").innerHTML = xmlDoc.getElementsByTagName("space")[0].childNodes[0].nodeValue;
+
+                            document.getElementById("occ").innerHTML = "Available";
+                            document.getElementById("bgaval").src = "aval.jpg";
+                        } catch {
+                            document.getElementById("roomnumb").innerHTML = "Room " + status;
+
+                        }
+
+                        //Number of Ecpected People
+                        try {
+                            document.getElementById("headcount").innerHTML =
+                                xmlDoc.getElementsByTagName("r25:expected_count")[0].childNodes[0].nodeValue;
+                        } catch {
+                            document.getElementById("headcount").innerHTML = "Unknown"
+                        }
+
+                        //Event Name
+                        try {
+                            document.getElementById("eventname").innerHTML =
+                                xmlDoc.getElementsByTagName("r25:event_name")[0].childNodes[0].nodeValue;
+                        } catch {
+                            document.getElementById("eventname").innerHTML = ""
+                        }
+
+                        //Background Color
+                        try {
+                            document.getElementById("bgaval").innerHTML = space;
+                            xmlDoc.getElementsByTagName("r25:event_name")[0].childNodes[0].nodeValue;
+                        } catch {
+                            document.getElementById("bgaval").innerHTML = ""
+                        }
+
+                        //Event Start and End Time
+                        try {
+                            var dates = (xmlDoc.getElementsByTagName("start_dt")[0].childNodes[0].nodeValue);
+                            var datee = (xmlDoc.getElementsByTagName("end_dt")[0].childNodes[0].nodeValue);
+
+                            document.getElementById("cltime").innerHTML = (dates + " - " + datee);
+                        } catch {
+                            document.getElementById("cltime").innerHTML = "No more events today";
+                        }
+
+                    }
+
+                } catch (error) {
+
+                }
+            }
+
+
+        }
+
+    </script>
+
+
+
+    <script>
+        
+        var bar2 = new RadialProgress(document.getElementById("bar2"), {
+                indeterminate: true,
+                colorFg: "#00d1aa",
+                thick: 1.5,
+                fixedTextSize: 0.2
+            });
+        
+        var bar1 = new RadialProgress(document.getElementById("bar1"), {
+                indeterminate: true,
+                colorFg: "#00d1aa",
+                thick: 1.5,
+                fixedTextSize: 0.2
+            });
+        
+         time = setInterval(function() {
+            getCompInfo(compname);
+       }, 3000);
+        
+
+        function getCompInfo() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    fillCompInfo(this);
+                }
+            };
+
+            var url = "http://snowautomation.msbb.uc.edu/API/compinfo/program/parsecomp.sh?" + compname;
+            console.log(url);
+
+            xhttp.open("GET", url, true);
+            xhttp.send();
+        }
+
+        function fillCompInfo(XML) {
+            var info = XML.responseXML;
+
+            document.getElementById("osname").innerHTML = "OS Name: " +
+                info.getElementsByTagName("osname")[0].childNodes[0].nodeValue;
+
+            document.getElementById("ip").innerHTML = "IPv4: " +
+                info.getElementsByTagName("ip")[0].childNodes[0].nodeValue;
+
+            document.getElementById("totmem").innerHTML = "Total Physical Memory: " +
+                info.getElementsByTagName("totmem")[0].childNodes[0].nodeValue;
+
+            document.getElementById("avmem").innerHTML = "Total Available Memory: " +
+                info.getElementsByTagName("avmem")[0].childNodes[0].nodeValue;
+
+            document.getElementById("sernum").innerHTML = "Serial Number: " +
+                info.getElementsByTagName("serial")[0].childNodes[0].nodeValue;
+
+            document.getElementById("boot").innerHTML = "Time Without Reboot: " +
+                info.getElementsByTagName("boottime")[0].childNodes[0].nodeValue;
+
+            document.getElementById("hstnam").innerHTML = "Hostname: " +
+                info.getElementsByTagName("hostname")[0].childNodes[0].nodeValue;
+
+            document.getElementById("hddfsp").innerHTML = "HDD Free Space: " +
+                info.getElementsByTagName("free_space")[0].childNodes[0].nodeValue;
+
+            //Code for cpu percentage circle
+            var cpuUse = info.getElementsByTagName("cpu_usage")[0].childNodes[0].nodeValue;
+            
+            
+            bar1.setIndeterminate(false);
+            bar1.setValue(cpuUse);
+
+
+            //Code for RAM percentage circle
+            var memUse = info.getElementsByTagName("memusage")[0].childNodes[0].nodeValue;
+            
+            
+            bar2.setIndeterminate(false);
+            bar2.setValue(memUse);
+            bar2.draw(false);
+        }
+
+    </script>
+    
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAx0GLyK4xrgjLPusdICl49Uf1D-hPv0U8",
+            authDomain: "lindner-mcc.firebaseapp.com",
+            databaseURL: "https://lindner-mcc.firebaseio.com",
+            projectId: "lindner-mcc",
+            storageBucket: "lindner-mcc.appspot.com",
+            messagingSenderId: "155948911927",
+            appId: "1:155948911927:web:92d9568737ffd005"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+        
+        db.collection("Main").doc("Info")
+            .onSnapshot(function(doc) {
+                const data = doc.data();
+                console.log("Current data: ", doc.data());
+            
+                if (data.status === "main") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Main/InfoPage.html';
+                }
+
+                //Classroom 0040
+                if (data.status === "0040") {
+                    compname = "LCBROOM0040-INX";
+                    getRoom(data.status);
+                    getCompInfo();
+                    document.getElementById('img').src = "";
+                }
+
+                //Classroom 0050
+                if (data.status === "0050") {
+                    compname = "LCBROOM0050-INX";
+                    getRoom(data.status);
+                    getCompInfo();
+                    document.getElementById('img').src = "http://10.97.30.43:8080/guacamole/#/client/UENfMDA1MABjAGRlZmF1bHQ=/?username=&password=";
+                }
+
+                //Classroom 0060
+                if (data.status === "0060") {
+                    compname = "LCBROOM0060-INX";
+                    getRoom(data.status);
+                    getCompInfo();
+                    document.getElementById('img').src = "";
+                }
+
+                //Classroom 0070
+                if (data.status === "0070") {
+                    compname = "LCBROOM0070-INX";
+                    getRoom(data.status);
+                    getCompInfo();
+                    document.getElementById('img').src = "http://10.97.30.43:8080/guacamole/#/client/UENfMDA3MABjAGRlZmF1bHQ=/?username=&password=";
+                }
+
+                //Classroom 1210
+                if (data.status === "1210") {
+                    compname = "LCBROOM1210-INX";
+                    getRoom(data.status);
+                    getCompInfo();
+                    document.getElementById('img').src = "http://10.97.30.43:8080/guacamole/#/client/UENfMTIxMABjAGRlZmF1bHQ=/?username=&password=";
+                }
+
+                //Classroom 1215
+                if (data.status === "1215") {
+                    compname = "LCBROOM1215-INX";
+                    getRoom(data.status);
+                    getCompInfo();
+                    document.getElementById('img').src = "";
+                }
+
+                //Classroom 1220
+                if (data.status === "1220") {
+                    compname = "LCBROOM1220-INX";
+                    getRoom(data.status);
+                    getCompInfo();
+                    document.getElementById('img').src = "http://10.97.30.43:8080/guacamole/#/client/UENfMTIyMABjAGRlZmF1bHQ=/?username=&password=";
+                }
+
+                //Classroom 1410
+                if (data.status === "1410") {
+                    compname = "LCBROOM1410-INX";
+                    getRoom(data.status);
+                    getCompInfo();
+                    document.getElementById('img').src = "http://10.97.30.43:8080/guacamole/#/client/UENfMTQxMABjAGRlZmF1bHQ=/?username=&password=";
+                }            
+
+                //Classroom 2110
+                if (data.status === "2110") {
+                    compname = "LCBROOM2110-INX";
+                    getRoom(data.status);
+                    getCompInfo();
+                    document.getElementById('img').src = "http://10.97.30.43:8080/guacamole/#/client/UENfMjExMABjAGRlZmF1bHQ=/?username=&password=";
+                }
+
+                //Classroom 2120
+                if (data.status === "2120") {
+                    compname = "LCBROOM2120-INX";
+                    getRoom(data.status);
+                    getCompInfo();
+                    document.getElementById('img').src = "http://10.97.30.43:8080/guacamole/#/client/UENfMjEyMABjAGRlZmF1bHQ=/?username=&password=";
+                }
+
+                //Classroom 2125
+                if (data.status === "2125") {
+                    compname = "LCBROOM2125-INX";
+                    getRoom(data.status);
+                    getCompInfo();
+                    document.getElementById('img').src = "http://10.97.30.43:8080/guacamole/#/client/UENfMjEyNQBjAGRlZmF1bHQ=/?username=&password=";
+                    
+                }
+
+                //Classroom 2240
+                if (data.status === "2240") {
+                    compname = "LCBROOM2240-INX";
+                    getRoom(data.status);
+                    getCompInfo();
+                    document.getElementById('img').src = "http://10.97.30.43:8080/guacamole/#/client/UENfMjI0MABjAGRlZmF1bHQ=/?username=&password=";
+                }
+
+                //Classroom 2245
+                if (data.status === "2245") {
+                    compname = "LCBROOM2245-INX";
+                    getRoom(data.status);
+                    getCompInfo();
+                    document.getElementById('img').src = "http://10.97.30.43:8080/guacamole/#/client/UENfMjI0NQBjAGRlZmF1bHQ=/?username=&password=";
+                }
+
+                //Classroom 2250
+                if (data.status === "2250") {
+                    compname = "LCBROOM2250-INX";
+                    getRoom(data.status);
+                    getCompInfo();
+                    document.getElementById('img').src = "http://10.97.30.43:8080/guacamole/#/client/UENfMjI1MABjAGRlZmF1bHQ=/?username=&password=";
+                }
+
+                //Classroom 3115
+                if (data.status === "3115") {
+                    compname = "LCBROOM3115-INX";
+                    getRoom(data.status);
+                    getCompInfo();
+                    document.getElementById('img').src = "http://10.97.30.43:8080/guacamole/#/client/UENfMzExNQBjAGRlZmF1bHQ=/?username=&password=";
+                }
+
+                //Classroom 3120
+                if (data.status === "3120") {
+                    compname = "LCBROOM3120-INX";
+                    getRoom(data.status);
+                    getCompInfo();
+                    document.getElementById('img').src = "http://10.97.30.43:8080/guacamole/#/client/UENfMzEyMABjAGRlZmF1bHQ=/?username=&password=";
+                }            
+            
+                //Classroom 3125
+                if (data.status === "3125") {
+                    compname = "LCBROOM3125-INX";
+                    getRoom(data.status);
+                    getCompInfo();
+                    document.getElementById('img').src = "http://10.97.30.43:8080/guacamole/#/client/UENfMzEyNQBjAGRlZmF1bHQ=/?username=&password=";
+                }
+
+                //Classroom 3220
+                if (data.status === "3220") {
+                    compname = "LCBROOM3220-INX";
+                    getRoom(data.status);
+                    getCompInfo();
+                    document.getElementById('img').src = "http://10.97.30.43:8080/guacamole/#/client/UENfMzIyMABjAGRlZmF1bHQ=/?username=&password=";
+                }
+
+                //Classroom 3225
+                if (data.status === "3225") {
+                    compname = "LCBROOM3225-INX";
+                    getRoom(data.status);
+                    getCompInfo();
+                    document.getElementById('img').src = "http://10.97.30.43:8080/guacamole/#/client/UENfMzIyNQBjAGRlZmF1bHQ=/?username=&password=";
+                }
+
+                //Classroom 3230
+                if (data.status === "3230") {
+                    compname = "LCBROOM3230-INX";
+                    getRoom(data.status);
+                    getCompInfo();
+                    document.getElementById('img').src = "http://10.97.30.43:8080/guacamole/#/client/UENfMzIzMABjAGRlZmF1bHQ=/?username=&password=";
+                }
+
+                //Classroom 3240
+                if (data.status === "3240") {
+                    compname = "LCBROOM3240-INX";
+                    getRoom(data.status);
+                    getCompInfo();
+                    document.getElementById('img').src = "http://10.97.30.43:8080/guacamole/#/client/UENfMzI0MABjAGRlZmF1bHQ=/?username=&password=";
+                }
+
+                //Classroom 3260
+                if (data.status === "3260") {
+                    compname = "LCBROOM3260-INX";
+                    getRoom(data.status);
+                    getCompInfo();
+                    document.getElementById('img').src = "http://10.97.30.43:8080/guacamole/#/client/UENfMzI2MABjAGRlZmF1bHQ=/?username=&password=";
+                }
+
+                //Classroom 3265
+                if (data.status === "3265") {
+                    compname = "LCBROOM3265-INX";
+                    getRoom(data.status);
+                    getCompInfo();
+                    document.getElementById('img').src = "http://10.97.30.43:8080/guacamole/#/client/UENfMzI2NQBjAGRlZmF1bHQ=/?username=&password=";
+                }
+
+                //Classroom 4210
+                if (data.status === "4210") {
+                    compname = "LCBROOM4210-INX";
+                    getRoom(data.status);
+                    getCompInfo();
+                    document.getElementById('img').src = "http://10.97.30.43:8080/guacamole/#/client/UENfNDIxMABjAGRlZmF1bHQ=/?username=&password=";
+                }
+
+                //Classroom 4225
+                if (data.status === "4225") {
+                    compname = "LCBROOM4225-INX";
+                    getRoom(data.status);
+                    getCompInfo();
+                    document.getElementById('img').src = "http://10.97.30.43:8080/guacamole/#/client/UENfNDIyNQBjAGRlZmF1bHQ=/?username=&password=";
+                }
+
+                //Classroom 4230
+                if (data.status === "4230") {
+                    compname = "LCBROOM4230-INX";
+                    getRoom(data.status);
+                    getCompInfo();
+                    document.getElementById('img').src = "http://10.97.30.43:8080/guacamole/#/client/UENfNDIzMABjAGRlZmF1bHQ=/?username=&password=";
+                }
+
+                //Classroom 4245
+                if (data.status === "4245") {
+                    compname = "LCBROOM4245-INX";
+                    getRoom(data.status);
+                    getCompInfo();
+                    document.getElementById('img').src = "http://10.97.30.43:8080/guacamole/#/client/UENfNDI0NQBjAGRlZmF1bHQ=/?username=&password=";
+                }
+            
+                //Classroom 4330
+                if (data.status === "4330") {
+                    compname = "LCBROOM4330-INX";
+                    getRoom(data.status);
+                    getCompInfo();
+                    document.getElementById('img').src = "http://10.97.30.43:8080/guacamole/#/client/UENfNDMzMABjAGRlZmF1bHQ=/?username=&password=";
+                }
+            });
+
+    </script>
+    
+    
+        <script type="text/javascript">
+        //60000 milliseconds is 1 minute
+        window.setInterval("checkForRefresh()", 60000);
+
+        function checkForRefresh() {
+            var now = new Date();
+            if (now.getHours() == 06 && now.getMinutes() == 0) {
+                location.reload();
+            }
+        }
+    </script>
+    
+</body>
+
+</html>

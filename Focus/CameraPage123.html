@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Barlow:300&display=swap');
+
+        body {
+            background-color: #212331;
+            width: 92.8%;
+            height: 100%;
+            color: #f1f1f1;
+            font-family: 'Barlow', sans-serif;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            margin: 0px 10px 0px 0px;
+        }
+
+        .classtext {
+            text-align: center;
+            border-radius: 5px;
+            background-color: #2d3345;
+            width: 90%;
+            height: 20px;
+            padding: 6px 6px 6px 6px;
+            margin-top: 14px;
+            margin-bottom: 12px;
+            float: right;
+        }
+
+        .camera1 {
+            border-radius: 5px;
+            background-color: #2d3345;
+            width: 90%;
+            height: 380px;
+            padding: 6px 6px 6px 6px;
+            float: right;
+            margin-bottom: 12px;
+        }
+
+        .camera2 {
+            border-radius: 5px;
+            background-color: #2d3345;
+            width: 90%;
+            height: 380px;
+            padding: 6px 6px 6px 6px;
+            float: right;
+            margin-bottom: 12px;
+        }
+
+        .camera3 {
+            border-radius: 5px;
+            background-color: #2d3345;
+            width: 90%;
+            height: 380px;
+            padding: 6px 6px 6px 6px;
+            float: right;
+            margin-bottom: 12px;
+        }
+
+        .cameratext {
+            text-align: center;
+            padding-bottom: 6px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-firestore.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#config-web-app -->
+
+    <div class="classtext">
+        <div id="roomname">Classroom: 3240</div>
+    </div>
+
+    <div class="camera1">
+        <div class="cameratext">Camera 1</div>
+        <video width="100%" height="90%" id="camera1" autoplay></video>
+    </div>
+
+    <div class="camera2">
+        <div class="cameratext">Camera 2</div>
+        <video width="100%" height="90%" id="camera2" autoplay></video>
+    </div>
+
+    <div class="camera3">
+        <div class="cameratext">Camera 3</div>
+        <video width="100%" height="90%" id="camera3" autoplay></video>
+    </div>
+
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAx0GLyK4xrgjLPusdICl49Uf1D-hPv0U8",
+            authDomain: "lindner-mcc.firebaseapp.com",
+            databaseURL: "https://lindner-mcc.firebaseio.com",
+            projectId: "lindner-mcc",
+            storageBucket: "lindner-mcc.appspot.com",
+            messagingSenderId: "155948911927",
+            appId: "1:155948911927:web:92d9568737ffd005"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+
+        db.collection("Main").doc("Info")
+            .onSnapshot(function(doc) {
+                const data = doc.data();
+                console.log("Current data: ", doc.data());
+
+                if (data.status === "main") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Main/InfoPage2.html';
+
+                }
+
+                //Classroom 0040
+                if (data.status === "0040") {
+                    document.getElementById("roomname").innerHTML = "Room: 0040";
+                    
+                    
+                    var video1 = document.getElementById('camera1');
+                    video1.src = "http://10.37.192.70/vaddio-qc-usb-stream";
+                    
+                    var video2 = document.getElementById('camera2');
+                    video2.src = "http://10.37.192.71/vaddio-qc-usb-stream";
+                    
+                    var video3 = document.getElementById('camera3');
+                    video3.src = "http://10.37.192.72/vaddio-qc-usb-stream";
+
+                }
+
+                //Classroom 0050
+                if (data.status === "0050") {
+                    document.getElementById("roomname").innerHTML = "Room: 0050";
+                    
+                    var video1 = document.getElementById('camera1');
+                    var video2 = document.getElementById('camera2');
+                    var video3 = document.getElementById('camera3');
+                    
+                    var video1 = document.getElementById('camera1');
+                    video1.src = "http://10.37.191.161/vaddio-qc-usb-stream";
+                    
+                    var video2 = document.getElementById('camera2');
+                    video2.src = "http://10.37.191.164/vaddio-qc-usb-stream";
+                    
+                    var video3 = document.getElementById('camera3');
+                    video3.src = "http://10.37.191.153/vaddio-qc-usb-stream";
+                    
+                }
+
+                //Classroom 0060
+                if (data.status === "0060") {
+                    document.getElementById("roomname").innerHTML = "Room: 0060";
+                    
+                    
+                    var video1 = document.getElementById('camera1');
+                    var video2 = document.getElementById('camera2');
+                    var video3 = document.getElementById('camera3');
+                    
+                    var video1 = document.getElementById('camera1');
+                    video1.src = "http://10.37.192.102/vaddio-qc-usb-stream";
+                    
+                    var video2 = document.getElementById('camera2');
+                    video2.src = "http://10.37.192.103/vaddio-qc-usb-stream";
+                    
+                    var video3 = document.getElementById('camera3');
+                    video3.src = "http://10.37.192.104/vaddio-qc-usb-stream";
+
+                }
+
+                //Classroom 0070
+                if (data.status === "0070") {
+                    document.getElementById("roomname").innerHTML = "Room: 0070";
+                    
+                    
+                    var video1 = document.getElementById('camera1');
+                    var video2 = document.getElementById('camera2');
+                    var video3 = document.getElementById('camera3');
+                    
+                    
+                    var video1 = document.getElementById('camera1');
+                    video1.src = "http://10.37.192.117/vaddio-qc-usb-stream";
+                    
+                    var video2 = document.getElementById('camera2');
+                    video2.src = "http://10.37.192.120/vaddio-qc-usb-stream";
+                    
+                    var video3 = document.getElementById('camera3');
+                    video3.src = "http://10.37.192.119/vaddio-qc-usb-stream";
+
+                }
+
+                //Classroom 1210
+                if (data.status === "1210") {
+                    document.getElementById("roomname").innerHTML = "Room: 1210";
+                    
+                    
+                    var video1 = document.getElementById('camera1');
+                    var video2 = document.getElementById('camera2');
+                    var video3 = document.getElementById('camera3');
+                    
+                    
+                    var video1 = document.getElementById('camera1');
+                    video1.src = "http://10.37.14.250/vaddio-qc-usb-stream";
+                    
+                    var video2 = document.getElementById('camera2');
+                    video2.src = "http://10.37.14.251/vaddio-qc-usb-stream";
+                    
+                    var video3 = document.getElementById('camera3');
+                    video3.src = "http://10.37.14.252/vaddio-qc-usb-stream";
+
+                }
+
+                //Classroom 1215
+                if (data.status === "1215") {
+                    document.getElementById("roomname").innerHTML = "Room: 1215";
+                    
+                    
+                    var video1 = document.getElementById('camera1');
+                    var video2 = document.getElementById('camera2');
+                    var video3 = document.getElementById('camera3');
+                    
+                    
+                   var video1 = document.getElementById('camera1');
+                    video1.src = "http://10.37.192.243/vaddio-qc-usb-stream";
+                    
+                    var video2 = document.getElementById('camera2');
+                    video2.src = "http://10.37.192.244/vaddio-qc-usb-stream";
+                    
+                    var video3 = document.getElementById('camera3');
+                    video3.src = "http://10.37.192.245/vaddio-qc-usb-stream";
+
+                }
+
+                //Classroom 1220
+                if (data.status === "1220") {
+                    document.getElementById("roomname").innerHTML = "Room: 1220";
+                    
+                    
+                    var video1 = document.getElementById('camera1');
+                    var video2 = document.getElementById('camera2');
+                    var video3 = document.getElementById('camera3');
+                    
+                    
+                    var video1 = document.getElementById('camera1');
+                    video1.src = "http://10.37.193.6/vaddio-qc-usb-stream";
+                    
+                    var video2 = document.getElementById('camera2');
+                    video2.src = "http://10.37.193.5/vaddio-qc-usb-stream";
+                    
+                    var video3 = document.getElementById('camera3');
+                    video3.src = "";
+                    
+
+                }
+
+                //Classroom 1410
+                if (data.status === "1410") {
+                    document.getElementById("roomname").innerHTML = "Room: 1410";
+                    
+                    
+                    var video1 = document.getElementById('camera1');
+                    var video2 = document.getElementById('camera2');
+                    var video3 = document.getElementById('camera3');
+                    
+                    
+                    var video1 = document.getElementById('camera1');
+                    video1.src = "http://10.37.14.246/vaddio-qc-usb-stream";
+                    
+                    var video2 = document.getElementById('camera2');
+                    video2.src = "http://10.37.14.245/vaddio-qc-usb-stream";
+                    
+                    var video3 = document.getElementById('camera3');
+                    video3.src = "http://10.37.14.244/vaddio-qc-usb-stream";
+
+                }
+
+                //Classroom 2110
+                if (data.status === "2110") {
+                    document.getElementById("roomname").innerHTML = "Room: 2110";
+                    
+                    
+                    var video1 = document.getElementById('camera1');
+                    var video2 = document.getElementById('camera2');
+                    var video3 = document.getElementById('camera3');
+                    
+                    
+                    var video1 = document.getElementById('camera1');
+                    video1.src = "http://10.37.193.150/vaddio-qc-usb-stream";
+                    
+                    var video2 = document.getElementById('camera2');
+                    video2.src = "http://10.37.193.151/vaddio-qc-usb-stream";
+                    
+                    var video3 = document.getElementById('camera3');
+                    video3.src = "http://10.37.193.152/vaddio-qc-usb-stream";
+
+                }
+
+                //Classroom 2120
+                if (data.status === "2120") {
+                    document.getElementById("roomname").innerHTML = "Room: 2120";
+                    
+                    
+                    var video1 = document.getElementById('camera1');
+                    var video2 = document.getElementById('camera2');
+                    var video3 = document.getElementById('camera3');
+                    
+                    
+                    var video1 = document.getElementById('camera1');
+                    video1.src = "http://10.37.191.23/vaddio-qc-usb-stream";
+                    
+                    var video2 = document.getElementById('camera2');
+                    video2.src = "http://10.37.191.42/vaddio-qc-usb-stream";
+                    
+                    var video3 = document.getElementById('camera3');
+                    video3.src = "http://10.37.191.34/vaddio-qc-usb-stream";
+
+                }
+
+                //Classroom 2125
+                if (data.status === "2125") {
+                   
+                    
+                    var video1 = document.getElementById('camera1');
+                    var video2 = document.getElementById('camera2');
+                    var video3 = document.getElementById('camera3');
+                    
+                    document.getElementById("roomname").innerHTML = "Room: 2125";
+                    var video1 = document.getElementById('camera1');
+                    video1.src = "http://10.37.193.182/vaddio-qc-usb-stream";
+                    
+                    var video2 = document.getElementById('camera2');
+                    video2.src = "http://10.37.193.183/vaddio-qc-usb-stream";
+                    
+                    var video3 = document.getElementById('camera3');
+                    video3.src = "http://10.37.193.184/vaddio-qc-usb-stream";
+
+                }
+
+                //Classroom 2240
+                if (data.status === "2240") {
+                   
+                    
+                    var video1 = document.getElementById('camera1');
+                    var video2 = document.getElementById('camera2');
+                    var video3 = document.getElementById('camera3');
+                    document.getElementById("roomname").innerHTML = "Room: 2240";
+                    var video1 = document.getElementById('camera1');
+                    video1.src = "http://10.37.194.6/vaddio-qc-usb-stream";
+                    
+                    var video2 = document.getElementById('camera2');
+                    video2.src = "http://10.37.194.7/vaddio-qc-usb-stream";
+                    
+                    var video3 = document.getElementById('camera3');
+                    video3.src = "http://10.37.194.8/vaddio-qc-usb-stream";
+
+                }
+
+                //Classroom 2245
+                if (data.status === "2245") {
+                   
+                    var video1 = document.getElementById('camera1');
+                    var video2 = document.getElementById('camera2');
+                    var video3 = document.getElementById('camera3');
+                    
+                    document.getElementById("roomname").innerHTML = "Room: 2245";
+                    var video1 = document.getElementById('camera1');
+                    video1.src = "http://10.37.194.22/vaddio-qc-usb-stream";
+                    
+                    var video2 = document.getElementById('camera2');
+                    video2.src = "http://10.37.194.23/vaddio-qc-usb-stream";
+                    
+                    var video3 = document.getElementById('camera3');
+                    video3.src = "http://10.37.194.24/vaddio-qc-usb-stream";
+
+                }
+
+                //Classroom 2250
+                if (data.status === "2250") {
+                    document.getElementById("roomname").innerHTML = "Room: 2250";
+                    
+                    var video1 = document.getElementById('camera1');
+                    var video2 = document.getElementById('camera2');
+                    var video3 = document.getElementById('camera3');
+                    
+                    var video1 = document.getElementById('camera1');
+                    video1.src = "http://10.37.194.38/vaddio-qc-usb-stream";
+                    
+                    var video2 = document.getElementById('camera2');
+                    video2.src = "http://10.37.194.39/vaddio-qc-usb-stream";
+                    
+                    var video3 = document.getElementById('camera3');
+                    video3.src = "http://10.37.194.40/vaddio-qc-usb-stream";
+
+                }
+
+                //Classroom 3115
+                if (data.status === "3115") {
+                    document.getElementById("roomname").innerHTML = "Room: 3115";
+                    
+                    
+                    var video1 = document.getElementById('camera1');
+                    var video2 = document.getElementById('camera2');
+                    var video3 = document.getElementById('camera3');
+                    
+                    
+                    var video1 = document.getElementById('camera1');
+                    video1.src = "http://10.37.194.67/vaddio-qc-usb-stream";
+                    
+                    var video2 = document.getElementById('camera2');
+                    video2.src = "http://10.37.194.68/vaddio-qc-usb-stream";
+                    
+                    var video3 = document.getElementById('camera3');
+                    video3.src = "http://10.37.194.69/vaddio-qc-usb-stream";
+                }
+
+                //Classroom 3120
+                if (data.status === "3120") {
+                    document.getElementById("roomname").innerHTML = "Room: 3120";
+                    
+                    var video1 = document.getElementById('camera1');
+                    var video2 = document.getElementById('camera2');
+                    var video3 = document.getElementById('camera3');
+                    
+                    
+                    var video1 = document.getElementById('camera1');
+                    video1.src = "http://10.37.194.85/vaddio-qc-usb-stream";
+                    
+                    var video2 = document.getElementById('camera2');
+                    video2.src = "http://10.37.194.87/vaddio-qc-usb-stream";
+                    
+                    var video3 = document.getElementById('camera3');
+                    video3.src = "http://10.37.8.122/vaddio-qc-usb-stream";
+
+                }
+
+                //Classroom 3125
+                if (data.status === "3125") {
+                    document.getElementById("roomname").innerHTML = "Room: 3125";
+                    
+                    
+                    var video1 = document.getElementById('camera1');
+                    var video2 = document.getElementById('camera2');
+                    var video3 = document.getElementById('camera3');
+                    
+                    
+                    var video1 = document.getElementById('camera1');
+                    video1.src = "http://10.37.194.115/vaddio-qc-usb-stream";
+                    
+                    var video2 = document.getElementById('camera2');
+                    video2.src = "http://10.37.194.116/vaddio-qc-usb-stream";
+                    
+                    var video3 = document.getElementById('camera3');
+                    video3.src = "http://10.37.194.117/vaddio-qc-usb-stream";
+
+                }
+
+                //Classroom 3220
+                if (data.status === "3220") {
+                    document.getElementById("roomname").innerHTML = "Room: 3220";
+                    
+                    var video1 = document.getElementById('camera1');
+                    var video2 = document.getElementById('camera2');
+                    var video3 = document.getElementById('camera3');
+                    
+                    
+                    var video1 = document.getElementById('camera1');
+                    video1.src = "http://10.37.194.195/vaddio-qc-usb-stream";
+                    
+                    var video2 = document.getElementById('camera2');
+                    video2.src = "http://10.37.194.196/vaddio-qc-usb-stream";
+                    
+                    var video3 = document.getElementById('camera3');
+                    video3.src = "http://10.37.194.197/vaddio-qc-usb-stream";
+
+                }
+
+                //Classroom 3225
+                if (data.status === "3225") {
+                    document.getElementById("roomname").innerHTML = "Room: 3225";
+                    
+                    var video1 = document.getElementById('camera1');
+                    var video2 = document.getElementById('camera2');
+                    var video3 = document.getElementById('camera3');
+                    
+                    var video1 = document.getElementById('camera1');
+                    video1.src = "http://10.37.194.211/vaddio-qc-usb-stream";
+                    
+                    var video2 = document.getElementById('camera2');
+                    video2.src = "http://10.37.194.212/vaddio-qc-usb-stream";
+                    
+                    var video3 = document.getElementById('camera3');
+                    video3.src = "http://10.37.194.213/vaddio-qc-usb-stream";
+                }
+
+                //Classroom 3230
+                if (data.status === "3230") {
+                    document.getElementById("roomname").innerHTML = "Room: 3230";
+                    
+                    var video1 = document.getElementById('camera1');
+                    var video2 = document.getElementById('camera2');
+                    var video3 = document.getElementById('camera3');
+                    
+                    
+                    var video1 = document.getElementById('camera1');
+                    video1.src = "http://10.37.194.227/vaddio-qc-usb-stream";
+                    
+                    var video2 = document.getElementById('camera2');
+                    video2.src = "http://10.37.194.228/vaddio-qc-usb-stream";
+                    
+                    var video3 = document.getElementById('camera3');
+                    video3.src = "http://10.37.194.229/vaddio-qc-usb-stream";
+                }
+
+                //Classroom 3240
+                if (data.status === "3240") {
+                    document.getElementById("roomname").innerHTML = "Room: 3240";
+                    
+                    var video1 = document.getElementById('camera1');
+                    var video2 = document.getElementById('camera2');
+                    var video3 = document.getElementById('camera3');
+                    
+                    
+                    var video1 = document.getElementById('camera1');
+                    video1.src = "http://10.37.195.19/vaddio-qc-usb-stream";
+                    
+                    var video2 = document.getElementById('camera2');
+                    video2.src = "http://10.37.195.20/vaddio-qc-usb-stream";
+                    
+                    var video3 = document.getElementById('camera3');
+                    video3.src = "http://10.37.195.21/vaddio-qc-usb-stream";
+
+                }
+
+                //Classroom 3260
+                if (data.status === "3260") {
+                    document.getElementById("roomname").innerHTML = "Room: 3260";
+                    
+                    var video1 = document.getElementById('camera1');
+                    var video2 = document.getElementById('camera2');
+                    var video3 = document.getElementById('camera3');
+                    
+                    var video1 = document.getElementById('camera1');
+                    video1.src = "http://10.37.195.35/vaddio-qc-usb-stream";
+                    
+                    var video2 = document.getElementById('camera2');
+                    video2.src = "http://10.37.195.36/vaddio-qc-usb-stream";
+                    
+                    var video3 = document.getElementById('camera3');
+                    video3.src = "http://10.37.195.37/vaddio-qc-usb-stream";
+
+                }
+
+                //Classroom 3265
+                if (data.status === "3265") {
+                    document.getElementById("roomname").innerHTML = "Room: 3265";
+                    
+                    var video1 = document.getElementById('camera1');
+                    var video2 = document.getElementById('camera2');
+                    var video3 = document.getElementById('camera3');
+                    
+                    var video1 = document.getElementById('camera1');
+                    video1.src = "http://10.37.195.51/vaddio-qc-usb-stream";
+                    
+                    var video2 = document.getElementById('camera2');
+                    video2.src = "http://10.37.195.54/vaddio-qc-usb-stream";
+                    
+                    var video3 = document.getElementById('camera3');
+                    video3.src = "http://10.37.195.53/vaddio-qc-usb-stream";
+
+                }
+
+                //Classroom 4210
+                if (data.status === "4210") {
+                    document.getElementById("roomname").innerHTML = "Room: 4210";
+                    
+                    var video1 = document.getElementById('camera1');
+                    var video2 = document.getElementById('camera2');
+                    var video3 = document.getElementById('camera3');
+                    
+                    
+                    var video1 = document.getElementById('camera1');
+                    video1.src = "http://10.37.195.158/vaddio-qc-usb-stream";
+                    
+                    var video2 = document.getElementById('camera2');
+                    video2.src = "http://10.37.195.156/vaddio-qc-usb-stream";
+                    
+                    var video3 = document.getElementById('camera3');
+                    video3.src = "http://10.37.195.157/vaddio-qc-usb-stream";
+
+
+                }
+
+                //Classroom 4225
+                if (data.status === "4225") {
+                    document.getElementById("roomname").innerHTML = "Room: 4225";
+                    
+                    var video1 = document.getElementById('camera1');
+                    var video2 = document.getElementById('camera2');
+                    var video3 = document.getElementById('camera3');
+                    
+                    
+                    var video1 = document.getElementById('camera1');
+                    video1.src = "http://10.37.195.168/vaddio-qc-usb-stream";
+                    
+                    var video2 = document.getElementById('camera2');
+                    video2.src = "http://10.37.195.169/vaddio-qc-usb-stream";
+                    
+                    var video3 = document.getElementById('camera3');
+                    video3.src = "http://10.37.195.170/vaddio-qc-usb-stream";
+
+                }
+
+                //Classroom 4230
+                if (data.status === "4230") {
+                    document.getElementById("roomname").innerHTML = "Room: 4230";
+                    
+                    var video1 = document.getElementById('camera1');
+                    var video2 = document.getElementById('camera2');
+                    var video3 = document.getElementById('camera3');
+                    
+                    var video1 = document.getElementById('camera1');
+                    video1.src = "http://10.37.195.188/vaddio-qc-usb-stream";
+                    
+                    var video2 = document.getElementById('camera2');
+                    video2.src = "http://10.37.195.189/vaddio-qc-usb-stream";
+                    
+                    var video3 = document.getElementById('camera3');
+                    video3.src = "http://10.37.195.190/vaddio-qc-usb-stream";
+
+                }
+
+                //Classroom 4245
+                if (data.status === "4245") {
+                    document.getElementById("roomname").innerHTML = "Room: 4245";
+                    
+                    var video1 = document.getElementById('camera1');
+                    var video2 = document.getElementById('camera2');
+                    var video3 = document.getElementById('camera3');
+                    
+                    var video1 = document.getElementById('camera1');
+                    video1.src = "";
+                    
+                    var video2 = document.getElementById('camera2');
+                    video2.src = "";
+                    
+                    var video3 = document.getElementById('camera3');
+                    video3.src = "";
+
+                }
+
+                //Classroom 4330
+                if (data.status === "4330") {
+                    document.getElementById("roomname").innerHTML = "Room: 4330";
+                    
+                    var video1 = document.getElementById('camera1');
+                    var video2 = document.getElementById('camera2');
+                    var video3 = document.getElementById('camera3');
+                    
+                    var video1 = document.getElementById('camera1');
+                    video1.src = "http://10.37.196.108/vaddio-qc-usb-stream";
+                    
+                    var video2 = document.getElementById('camera2');
+                    video2.src = "http://10.37.196.109/vaddio-qc-usb-stream";
+                    
+                    var video3 = document.getElementById('camera3');
+                    video3.src = "http://10.37.196.110/vaddio-qc-usb-stream";
+
+                }
+            });
+
+    </script>
+    
+        <script type="text/javascript">
+        //60000 milliseconds is 1 minute
+        window.setInterval("checkForRefresh()", 60000);
+
+        function checkForRefresh() {
+            var now = new Date();
+            if (now.getHours() == 06 && now.getMinutes() == 0) {
+                location.reload();
+            }
+        }
+    </script>
+
+</body>
+
+</html>

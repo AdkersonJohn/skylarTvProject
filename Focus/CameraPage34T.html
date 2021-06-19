@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Barlow:300&display=swap');
+
+        body {
+            background-color: #212331;
+            width: 92.8%;
+            height: 100%;
+            color: #f1f1f1;
+            font-family: 'Barlow', sans-serif;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            margin: 0px 10px 0px 0px;
+
+        }
+
+        .classtext {
+            text-align: center;
+            border-radius: 5px;
+            background-color: #2d3345;
+            width: 90%;
+            height: 20px;
+            padding: 6px 6px 6px 6px;
+            margin-top: 14px;
+            margin-bottom: 12px;
+            float: right;
+        }
+
+        .camera4 {
+            border-radius: 5px;
+            background-color: #2d3345;
+            width: 90%;
+            height: 380px;
+            padding: 6px 6px 6px 6px;
+            float: right;
+            margin-bottom: 12px;
+
+        }
+
+        .camera5 {
+            border-radius: 5px;
+            background-color: #2d3345;
+            width: 90%;
+            height: 380px;
+            padding: 6px 6px 6px 6px;
+            float: right;
+            margin-bottom: 12px;
+        }
+
+        .touch {
+            border-radius: 5px;
+            background-color: #2d3345;
+            width: 90%;
+            height: 380px;
+            padding: 6px 6px 6px 6px;
+            float: right;
+            margin-bottom: 12px;
+        }
+
+        .cameratext {
+            text-align: center;
+            padding-bottom: 6px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#config-web-app -->
+
+    <div class="classtext">
+        <div id="roomname">Classroom: 3240</div>
+    </div>
+
+
+    <div class="camera4">
+        <div class="cameratext">Camera 4</div>
+        <video width="100%" height="90%" id="camera4" autoplay></video>
+    </div>
+
+    <div class="camera5">
+        <div class="cameratext">Camera 5</div>
+        <video width="100%" height="90%" id="camera5" autoplay></video>
+    </div>
+
+    <div class="touch">
+        <div class="cameratext">Touch Pannel</div>
+            <iframe id="touch" height="90%" width="100%"></iframe>
+    </div>
+
+
+    <script>
+        function embedVlc4(address) {
+            var vlc = document.getElementById("vlc4");
+            var clone = vlc.cloneNode(true);
+            clone.setAttribute('target', address);
+            vlc.parentNode.replaceChild(clone, vlc)
+        }
+
+        function embedVlc5(address) {
+            var vlc = document.getElementById("vlc5");
+            var clone = vlc.cloneNode(true);
+            clone.setAttribute('target', address);
+            vlc.parentNode.replaceChild(clone, vlc)
+        }
+
+    </script>
+
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAx0GLyK4xrgjLPusdICl49Uf1D-hPv0U8",
+            authDomain: "lindner-mcc.firebaseapp.com",
+            databaseURL: "https://lindner-mcc.firebaseio.com",
+            projectId: "lindner-mcc",
+            storageBucket: "lindner-mcc.appspot.com",
+            messagingSenderId: "155948911927",
+            appId: "1:155948911927:web:92d9568737ffd005"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+
+        db.collection("Main").doc("Info")
+            .onSnapshot(function(doc) {
+                const data = doc.data();
+                console.log("Current data: ", doc.data());
+            
+                if (data.status === "main") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Main/Classroom1.html';
+                    
+                }
+
+                //Classroom 0040
+                if (data.status === "0040") {
+                    document.getElementById("roomname").innerHTML = "Room: 0040";
+                    document.getElementById('touch').src = "http://lcb-guacamole.msbb.uc.edu/#/client/UGFuZWxfMDA0MABjAGRlZmF1bHQ=/?username=&password=";
+                    
+                    var video4 = document.getElementById('camera4');
+                    var video5 = document.getElementById('camera5');
+                    
+                    video4.src = "http://10.37.192.71/vaddio-qc-usb-stream";
+
+                    video5.src = "http://10.37.192.72/vaddio-qc-usb-stream";
+                    
+                }
+
+                //Classroom 0050
+                if (data.status === "0050") {
+                    document.getElementById("roomname").innerHTML = "Room: 0050";
+                    document.getElementById('touch').src = "http://lcb-guacamole.msbb.uc.edu/#/client/UGFuZWxfMDA1MABjAGRlZmF1bHQ=/?username=&password=";
+                    
+                    var video4 = document.getElementById('camera4');
+                    var video5 = document.getElementById('camera5');
+                    
+                    
+                }
+
+                //Classroom 0060
+                if (data.status === "0060") {
+                    document.getElementById("roomname").innerHTML = "Room: 0060/?username=&password=";
+                    document.getElementById('touch').src = "http://lcb-guacamole.msbb.uc.edu/#/client/UGFuZWxfMDA2MABjAGRlZmF1bHQ=/?username=&password=";
+                    
+                    var video4 = document.getElementById('camera4');
+                    var video5 = document.getElementById('camera5');
+                    
+                    video4.src = "http://10.37.192.104/vaddio-qc-usb-stream";
+
+                    video5.src = "http://10.37.192.103/vaddio-qc-usb-stream";
+                    
+                }
+
+                //Classroom 0070
+                //we need to add one more camera here
+                if (data.status === "0070") {
+                    document.getElementById("roomname").innerHTML = "Room: 0070/?username=&password=";
+                    document.getElementById('touch').src = "http://lcb-guacamole.msbb.uc.edu/#/client/UGFuZWxfMDA3MABjAGRlZmF1bHQ=/?username=&password=";
+                    
+                    var video4 = document.getElementById('camera4');
+                    var video5 = document.getElementById('camera5');
+                    
+                    video4.src = "http://10.37.192.120/vaddio-qc-usb-stream";
+
+                    video5.src = "http://10.37.192.119/vaddio-qc-usb-stream";
+                    
+                }
+            
+                //Classroom 1210
+                if (data.status === "1210") {
+                    document.getElementById("roomname").innerHTML = "Room: 1210";
+                    document.getElementById('touch').src = "http://lcb-guacamole.msbb.uc.edu/#/client/UGFuZWxfMTIxMABjAGRlZmF1bHQ=/?username=&password=";
+                    
+                    var video4 = document.getElementById('camera4');
+                    var video5 = document.getElementById('camera5');
+                    
+                    video4.src = "http://10.37.14.253/vaddio-qc-usb-stream";
+
+                    video5.src = "http://10.37.14.254/vaddio-qc-usb-stream";
+                   
+                }
+
+                //Classroom 1215
+                if (data.status === "1215") {
+                    document.getElementById("roomname").innerHTML = "Room: 1215";
+                    document.getElementById('touch').src = "http://lcb-guacamole.msbb.uc.edu/#/client/UGFuZWxfMTIxNQBjAGRlZmF1bHQ=/?username=&password=";
+                    
+                    var video4 = document.getElementById('camera4');
+                    var video5 = document.getElementById('camera5');
+                    
+                    video4.src = "http://10.37.192.246/vaddio-qc-usb-stream";
+
+                    video5.src = "";
+                    
+
+                }
+
+                //Classroom 1220
+                if (data.status === "1220") {
+                    document.getElementById("roomname").innerHTML = "Room: 1220";
+                    document.getElementById('touch').src = "http://lcb-guacamole.msbb.uc.edu/#/client/UGFuZWxfMTIyMABjAGRlZmF1bHQ=/?username=&password=";
+                    
+                    var video4 = document.getElementById('camera4');
+                    var video5 = document.getElementById('camera5');
+                    
+                    video4.src = "";
+
+                    video5.src = "";
+
+                }
+            
+                //Classroom 1410
+                if (data.status === "1410") {
+                    document.getElementById("roomname").innerHTML = "Room: 1410";
+                    document.getElementById('touch').src = "http://lcb-guacamole.msbb.uc.edu/#/client/UGFuZWxfMTQxMABjAGRlZmF1bHQ=/?username=&password=";
+                    
+                    var video4 = document.getElementById('camera4');
+                    var video5 = document.getElementById('camera5');
+                    
+                    video4.src = "http://10.37.14.242/vaddio-qc-usb-stream";
+
+                    video5.src = "http://10.37.14.244/vaddio-qc-usb-stream";
+                   
+                }
+
+                //Classroom 2110
+                if (data.status === "2110") {
+                    document.getElementById("roomname").innerHTML = "Room: 2110";
+                    document.getElementById('touch').src = "http://lcb-guacamole.msbb.uc.edu/#/client/UGFuZWxfMjExMABjAGRlZmF1bHQ=/?username=&password=";
+                    
+                    var video4 = document.getElementById('camera4');
+                    var video5 = document.getElementById('camera5');
+                    
+                    video4.src = "http://10.37.193.151/vaddio-qc-usb-stream";
+
+                    video5.src = "http://10.37.193.152/vaddio-qc-usb-stream";
+
+                }
+
+                //Classroom 2120
+                if (data.status === "2120") {
+                    document.getElementById("roomname").innerHTML = "Room: 2120";
+                    document.getElementById('touch').src = "http://lcb-guacamole.msbb.uc.edu/#/client/UGFuZWxfMjEyMABjAGRlZmF1bHQ=/?username=&password=";
+                    
+                    var video4 = document.getElementById('camera4');
+                    var video5 = document.getElementById('camera5');
+                    
+                    video4.src = "http://10.37.191.42/vaddio-qc-usb-stream";
+
+                    video5.src = "http://10.37.191.34/vaddio-qc-usb-stream";
+                    
+
+                }
+
+                //Classroom 2125
+                if (data.status === "2125") {
+                    document.getElementById("roomname").innerHTML = "Room: 2125";
+                    document.getElementById('touch').src = "http://lcb-guacamole.msbb.uc.edu/#/client/UGFuZWxfMjEyNQBjAGRlZmF1bHQ=/?username=&password=";
+                    
+                    var video4 = document.getElementById('camera4');
+                    var video5 = document.getElementById('camera5');
+                    
+                    video4.src = "http://10.37.193.183/vaddio-qc-usb-stream";
+
+                    video5.src = "http://10.37.193.184/vaddio-qc-usb-stream";
+
+                }
+
+                //Classroom 2240
+                if (data.status === "2240") {
+                    document.getElementById("roomname").innerHTML = "Room: 2240";
+                    document.getElementById('touch').src = "http://lcb-guacamole.msbb.uc.edu/#/client/UGFuZWxfMjI0MABjAGRlZmF1bHQ=/?username=&password=";
+                    
+                    var video4 = document.getElementById('camera4');
+                    var video5 = document.getElementById('camera5');
+                    
+                    video4.src = "http://10.37.194.7/vaddio-qc-usb-stream";
+
+                    video5.src = "http://10.37.194.8/vaddio-qc-usb-stream";
+
+                }
+
+                //Classroom 2245
+                if (data.status === "2245") {
+                    document.getElementById("roomname").innerHTML = "Room: 2245";
+                    document.getElementById('touch').src = "http://lcb-guacamole.msbb.uc.edu/#/client/UGFuZWxfMjI0NQBjAGRlZmF1bHQ=/?username=&password=";
+                    
+                    var video4 = document.getElementById('camera4');
+                    var video5 = document.getElementById('camera5');
+                    
+                    video4.src = "http://10.37.194.23/vaddio-qc-usb-stream";
+
+                    video5.src = "http://10.37.194.24/vaddio-qc-usb-stream";
+
+                }
+
+                //Classroom 2250
+                if (data.status === "2250") {
+                    document.getElementById("roomname").innerHTML = "Room: 2250";
+                    document.getElementById('touch').src = "http://lcb-guacamole.msbb.uc.edu/#/client/UGFuZWxfMjI1MABjAGRlZmF1bHQ=/?username=&password=";
+                    
+                    var video4 = document.getElementById('camera4');
+                    var video5 = document.getElementById('camera5');
+                    
+                    video4.src = "http://10.37.194.39/vaddio-qc-usb-stream";
+
+                    video5.src = "http://10.37.194.40/vaddio-qc-usb-stream";
+
+                }
+
+                //Classroom 3115
+                if (data.status === "3115") {
+                    document.getElementById("roomname").innerHTML = "Room: 3115";
+                    document.getElementById('touch').src = "http://lcb-guacamole.msbb.uc.edu/#/client/UGFuZWxfMzExNQBjAGRlZmF1bHQ=/?username=&password=";
+                    
+                    var video4 = document.getElementById('camera4');
+                    var video5 = document.getElementById('camera5');
+                    
+                   video4.src = "http://10.37.194.68/vaddio-qc-usb-stream";
+
+                    video5.src = "http://10.37.194.69/vaddio-qc-usb-stream";
+
+                }
+            
+                //Classroom 3120
+                if (data.status === "3120") {
+                    document.getElementById("roomname").innerHTML = "Room: 3120";
+                    document.getElementById('touch').src = "http://lcb-guacamole.msbb.uc.edu/#/client/UGFuZWxfMzEyMABjAGRlZmF1bHQ=/?username=&password=";
+                    
+                    var video4 = document.getElementById('camera4');
+                    var video5 = document.getElementById('camera5');
+                    
+                    video4.src = "";
+
+                    video5.src = "";
+                   
+                }
+
+                //Classroom 3125
+                if (data.status === "3125") {
+                    document.getElementById("roomname").innerHTML = "Room: 3125";
+                    document.getElementById('touch').src = "http://lcb-guacamole.msbb.uc.edu/#/client/UGFuZWxfMzEyNQBjAGRlZmF1bHQ=/?username=&password=";
+                    
+                    var video4 = document.getElementById('camera4');
+                    var video5 = document.getElementById('camera5');
+                    
+                    video4.src = "http://10.37.194.116/vaddio-qc-usb-stream";
+
+                    video5.src = "http://10.37.194.117/vaddio-qc-usb-stream";
+
+                }
+
+                //Classroom 3220
+                if (data.status === "3220") {
+                    document.getElementById("roomname").innerHTML = "Room: 3220";
+                    document.getElementById('touch').src = "http://lcb-guacamole.msbb.uc.edu/#/client/UGFuZWxfMzIyMABjAGRlZmF1bHQ=/?username=&password=";
+                    
+                    var video4 = document.getElementById('camera4');
+                    var video5 = document.getElementById('camera5');
+                    
+                    video4.src = "http://10.37.194.196/vaddio-qc-usb-stream";
+
+                    video5.src = "http://10.37.194.197/vaddio-qc-usb-stream";
+
+                }
+
+                //Classroom 3225
+                if (data.status === "3225") {
+                    document.getElementById("roomname").innerHTML = "Room: 3225";
+                    document.getElementById('touch').src = "http://lcb-guacamole.msbb.uc.edu/#/client/UGFuZWxfMzIyNQBjAGRlZmF1bHQ=/?username=&password=";
+                    
+                    var video4 = document.getElementById('camera4');
+                    var video5 = document.getElementById('camera5');
+                    
+                    video4.src = "http://10.37.194.213/vaddio-qc-usb-stream";
+
+                    video5.src = "http://10.37.194.212/vaddio-qc-usb-stream";
+                    
+                }
+
+                //Classroom 3230
+                if (data.status === "3230") {
+                    document.getElementById("roomname").innerHTML = "Room: 3230";
+                    document.getElementById('touch').src = "http://lcb-guacamole.msbb.uc.edu/#/client/UGFuZWxfMzIzMABjAGRlZmF1bHQ=/?username=&password=";
+                    
+                    var video4 = document.getElementById('camera4');
+                    var video5 = document.getElementById('camera5');
+                    
+                    video4.src = "http://10.37.194.228/vaddio-qc-usb-stream";
+
+                    video5.src = "http://10.37.194.229/vaddio-qc-usb-stream";
+
+                }
+
+                //Classroom 3240
+                if (data.status === "3240") {
+                    document.getElementById("roomname").innerHTML = "Room: 3240";
+                    document.getElementById('touch').src = "http://lcb-guacamole.msbb.uc.edu/#/client/UGFuZWxfMzI0MABjAGRlZmF1bHQ=/?username=&password=";
+                    
+                    var video4 = document.getElementById('camera4');
+                    var video5 = document.getElementById('camera5');
+                    
+                    video4.src = "";
+
+                    video5.src = "";
+                }
+
+                //Classroom 3260
+                if (data.status === "3260") {
+                    document.getElementById("roomname").innerHTML = "Room: 3260";
+                    document.getElementById('touch').src = "http://lcb-guacamole.msbb.uc.edu/#/client/UGFuZWxfMzI2MABjAGRlZmF1bHQ=/?username=&password=";
+                    
+                    var video4 = document.getElementById('camera4');
+                    var video5 = document.getElementById('camera5');
+                    
+                   video4.src = "http://10.37.195.36/vaddio-qc-usb-stream";
+
+                    video5.src = "http://10.37.195.37/vaddio-qc-usb-stream";
+
+                }
+
+                //Classroom 3265
+                if (data.status === "3265") {
+                    document.getElementById("roomname").innerHTML = "Room: 3265";
+                    document.getElementById('touch').src = "http://lcb-guacamole.msbb.uc.edu/#/client/UGFuZWxfMzI2NQBjAGRlZmF1bHQ=/?username=&password=";
+                    
+                    var video4 = document.getElementById('camera4');
+                    var video5 = document.getElementById('camera5');
+                    
+                    video4.src = "http://10.37.195.54/vaddio-qc-usb-stream";
+
+                    video5.src = "http://10.37.195.53/vaddio-qc-usb-stream";
+                    
+
+                }
+
+                //Classroom 4210
+                if (data.status === "4210") {
+                    document.getElementById("roomname").innerHTML = "Room: 4210";
+                    document.getElementById('touch').src = "http://lcb-guacamole.msbb.uc.edu/#/client/UGFuZWxfNDIxMABjAGRlZmF1bHQ=/?username=&password=";
+                    
+                    var video4 = document.getElementById('camera4');
+                    var video5 = document.getElementById('camera5');
+                    
+                    video4.src = "http://10.37.195.158/vaddio-qc-usb-stream";
+
+                    video5.src = "http://10.37.195.157/vaddio-qc-usb-stream";
+                    
+
+                }
+
+                //Classroom 4225
+                if (data.status === "4225") {
+                    document.getElementById("roomname").innerHTML = "Room: 4225";
+                    document.getElementById('touch').src = "http://lcb-guacamole.msbb.uc.edu/#/client/UGFuZWxfNDIyNQBjAGRlZmF1bHQ=/?username=&password=";
+                    
+                    var video4 = document.getElementById('camera4');
+                    var video5 = document.getElementById('camera5');
+                    
+                    video4.src = "http://10.37.195.169/vaddio-qc-usb-stream";
+
+                    video5.src = "http://10.37.195.170/vaddio-qc-usb-stream";
+
+                }
+
+                //Classroom 4230
+                if (data.status === "4230") {
+                    document.getElementById("roomname").innerHTML = "Room: 4230";
+                    document.getElementById('touch').src = "http://lcb-guacamole.msbb.uc.edu/#/client/UGFuZWxfNDIzMABjAGRlZmF1bHQ=/?username=&password=";
+                    
+                    var video4 = document.getElementById('camera4');
+                    var video5 = document.getElementById('camera5');
+                    
+                    video4.src = "http://10.37.195.188/vaddio-qc-usb-stream";
+
+                    video5.src = "http://10.37.195.190/vaddio-qc-usb-stream";
+                    
+                }
+            
+                //Classroom 4245
+                if (data.status === "4245") {
+                    document.getElementById("roomname").innerHTML = "Room: 4245";
+                    document.getElementById('touch').src = "http://lcb-guacamole.msbb.uc.edu/#/client/UGFuZWxfNDI0NQBjAGRlZmF1bHQ=/?username=&password=";
+                    
+                    var video4 = document.getElementById('camera4');
+                    var video5 = document.getElementById('camera5');
+                    
+                    video4.src = "";
+
+                    video5.src = "";
+                   
+                }
+
+                //Classroom 4330
+                if (data.status === "4330") {
+                    document.getElementById("roomname").innerHTML = "Room: 4330";
+                    document.getElementById('touch').src = "http://lcb-guacamole.msbb.uc.edu/#/client/UGFuZWxfNDMzMABjAGRlZmF1bHQ=/?username=&password=";
+                    
+                    var video4 = document.getElementById('camera4');
+                    var video5 = document.getElementById('camera5');
+                    
+                    video4.src = "";
+
+                    video5.src = "";
+
+                }
+            });
+
+    </script>
+    
+        <script type="text/javascript">
+        //60000 milliseconds is 1 minute
+        window.setInterval("checkForRefresh()", 60000);
+
+        function checkForRefresh() {
+            var now = new Date();
+            if (now.getHours() == 06 && now.getMinutes() == 0) {
+                location.reload();
+            }
+        }
+    </script>
+
+</body>
+
+</html>

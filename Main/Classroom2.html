@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <style>
+        @import url('https://divs.googleapis.com/cssfamily=Barlow+Condensed:200&display=swap');
+
+
+        body {
+            overflow-x: hidden;
+            overflow-y: hidden;
+            background-color: #212331;
+            color: #f1f1f1;
+            font-family: 'Barlow', sans-serif;
+            margin: 2px;
+            padding: 0px;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+
+        .text {
+            text-align: center;
+            border-radius: 5px;
+            background-color: #2d3345;
+            padding: 5px;
+        }
+
+        .row {
+            display: inline-flex;
+            padding: 5px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#config-web-app -->
+
+    <div class="row">
+        <div class="text">
+            <div>Room: 2125 #11</div>
+            <div>
+                
+            <video src="http://10.37.193.182/vaddio-qc-usb-stream" width="335" height="200" autoplay ></video>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="text">
+            <div>Room: 2240 #12</div>
+            <div>
+                <video src="http://10.37.194.6/vaddio-qc-usb-stream" width="335" height="200" autoplay ></video>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="text">
+            <div>Room: 2245 #13</div>
+            <div>
+                <video src="http://10.37.194.22/vaddio-qc-usb-stream" width="335" height="200" autoplay ></video>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="text">
+            <div>Room: 2250 #14</div>
+            <div>
+                <video src="http://10.37.194.38/vaddio-qc-usb-stream" width="335" height="200" autoplay ></video>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="text">
+            <div>Room: 3115 #15</div>
+
+            <div>
+                <video src="http://10.37.194.67/vaddio-qc-usb-stream" width="335" height="200" autoplay ></video>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="text">
+            <div>Room: 3120 #16</div>
+            <div>
+                <video src="http://10.37.8.122/vaddio-qc-usb-stream" width="335" height="200" autoplay ></video>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="text">
+            <div>Room: 3125 #17</div>
+            <div>
+                <video src="http://10.37.194.115/vaddio-qc-usb-stream" width="335" height="200" autoplay ></video>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="text">
+            <div>Room: 3220 #18</div>
+            <div>
+                <video src="http://10.37.194.195/vaddio-qc-usb-stream" width="335" height="200" autoplay ></video>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="text">
+            <div>Room: 3225 #19</div>
+
+            <div>
+               <video src="http://10.37.194.211/vaddio-qc-usb-stream" width="335" height="200" autoplay ></video>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="text">
+            <div>Room: 3230 #20</div>
+            <div>
+                <video src="http://10.37.194.227/vaddio-qc-usb-stream" width="335" height="200" autoplay ></video>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function embedVlc1(address) {
+            var vlc = document.getElementById("vlc1");
+            var clone = vlc.cloneNode(true);
+            clone.setAttribute('target', address);
+            vlc.parentNode.replaceChild(clone, vlc)
+        }
+
+        function embedVlc2(address) {
+            var vlc = document.getElementById("vlc2");
+            var clone = vlc.cloneNode(true);
+            clone.setAttribute('target', address);
+            vlc.parentNode.replaceChild(clone, vlc)
+        }
+
+        function embedVlc3(address) {
+            var vlc = document.getElementById("vlc3");
+            var clone = vlc.cloneNode(true);
+            clone.setAttribute('target', address);
+            vlc.parentNode.replaceChild(clone, vlc)
+        }
+
+        function embedVlc4(address) {
+            var vlc = document.getElementById("vlc4");
+            var clone = vlc.cloneNode(true);
+            clone.setAttribute('target', address);
+            vlc.parentNode.replaceChild(clone, vlc)
+        }
+
+        function embedVlc5(address) {
+            var vlc = document.getElementById("vlc5");
+            var clone = vlc.cloneNode(true);
+            clone.setAttribute('target', address);
+            vlc.parentNode.replaceChild(clone, vlc)
+        }
+
+        function embedVlc6(address) {
+            var vlc = document.getElementById("vlc6");
+            var clone = vlc.cloneNode(true);
+            clone.setAttribute('target', address);
+            vlc.parentNode.replaceChild(clone, vlc)
+        }
+
+        function embedVlc7(address) {
+            var vlc = document.getElementById("vlc7");
+            var clone = vlc.cloneNode(true);
+            clone.setAttribute('target', address);
+            vlc.parentNode.replaceChild(clone, vlc)
+        }
+
+        function embedVlc8(address) {
+            var vlc = document.getElementById("vlc8");
+            var clone = vlc.cloneNode(true);
+            clone.setAttribute('target', address);
+            vlc.parentNode.replaceChild(clone, vlc)
+        }
+
+        function embedVlc9(address) {
+            var vlc = document.getElementById("vlc9");
+            var clone = vlc.cloneNode(true);
+            clone.setAttribute('target', address);
+            vlc.parentNode.replaceChild(clone, vlc)
+        }
+
+        function embedVlc10(address) {
+            var vlc = document.getElementById("vlc10");
+            var clone = vlc.cloneNode(true);
+            clone.setAttribute('target', address);
+            vlc.parentNode.replaceChild(clone, vlc)
+        }
+
+    </script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAx0GLyK4xrgjLPusdICl49Uf1D-hPv0U8",
+            authDomain: "lindner-mcc.firebaseapp.com",
+            databaseURL: "https://lindner-mcc.firebaseio.com",
+            projectId: "lindner-mcc",
+            storageBucket: "lindner-mcc.appspot.com",
+            messagingSenderId: "155948911927",
+            appId: "1:155948911927:web:92d9568737ffd005"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+
+        db.collection("Main").doc("Info")
+            .onSnapshot(function(doc) {
+                const data = doc.data();
+                console.log("Current data: ", doc.data());
+            
+               
+
+               //Classroom 0040
+                if (data.status === "0040") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/Blank1.html';
+
+                }
+
+                //Classroom 0050
+                if (data.status === "0050") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/Blank1.html';
+
+                }
+
+                //Classroom 0060
+                if (data.status === "0060") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/Blank1.html';
+
+                }
+
+                //Classroom 0070
+                if (data.status === "0070") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/Blank1.html';
+
+                }
+            
+                //Classroom 1210
+                if (data.status === "1210") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/Blank1.html';
+
+                }
+
+                //Classroom 1215
+                if (data.status === "1215") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/Blank1.html';
+
+                }
+
+                //Classroom 1220
+                if (data.status === "1220") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/Blank1.html';
+
+                }
+            
+                //Classroom 1410
+                if (data.status === "1410") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/Blank1.html';
+
+                }
+
+                //Classroom 2110
+                if (data.status === "2110") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/Blank1.html';
+
+                }
+
+                //Classroom 2120
+                if (data.status === "2120") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/Blank1.html';
+
+                }
+
+                //Classroom 2125
+                if (data.status === "2125") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/Blank1.html';
+
+                }
+
+                //Classroom 2240
+                if (data.status === "2240") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/Blank1.html';
+
+                }
+
+                //Classroom 2245
+                if (data.status === "2245") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/Blank1.html';
+
+                }
+
+                //Classroom 2250
+                if (data.status === "2250") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/Blank1.html';
+
+                }
+
+                //Classroom 3115
+                if (data.status === "3115") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/Blank1.html';
+
+                }
+            
+                //Classroom 3120
+                if (data.status === "3120") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/Blank1.html';
+
+                }
+
+                //Classroom 3125
+                if (data.status === "3125") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/Blank1.html';
+
+                }
+
+                //Classroom 3220
+                if (data.status === "3220") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/Blank1.html';
+
+                }
+
+                //Classroom 3225
+                if (data.status === "3225") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/Blank1.html';
+
+                }
+
+                //Classroom 3230
+                if (data.status === "3230") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/Blank1.html';
+                    
+                }
+
+                //Classroom 3240
+                if (data.status === "3240") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/Blank1.html';
+
+                }
+
+                //Classroom 3260
+                if (data.status === "3260") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/Blank1.html';
+
+                }
+
+                //Classroom 3265
+                if (data.status === "3265") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/Blank1.html';
+
+                }
+
+                //Classroom 4210
+                if (data.status === "4210") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/Blank1.html';
+
+                }
+
+                //Classroom 4225
+                if (data.status === "4225") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/Blank1.html';
+
+                }
+
+                //Classroom 4230
+                if (data.status === "4230") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/Blank1.html';
+
+                }
+
+                //Classroom 4245
+                if (data.status === "4245") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/Blank1.html';
+
+                }
+            
+                //Classroom 4330
+                if (data.status === "4330") {
+                    window.location = 'http://snowautomation.msbb.uc.edu/TV_MCC/Focus/Blank1.html';
+
+                }
+            });
+
+    </script>
+
+        <script type="text/javascript">
+        //60000 milliseconds is 1 minute
+        window.setInterval("checkForRefresh()", 60000);
+
+        function checkForRefresh() {
+            var now = new Date();
+            if (now.getHours() == 06 && now.getMinutes() == 0) {
+                location.reload();
+            }
+        }
+    </script>
+    
+</body>
+
+</html>
